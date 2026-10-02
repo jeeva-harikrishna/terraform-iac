@@ -97,7 +97,8 @@ resource "aws_route_table_association" "security_private_2c" {
 
 # --- VPC 2: dbi360-dev-stage-vpc ---
 resource "aws_vpc" "dbi360_dev_stage_vpc" {
-  cidr_block           = "10.0.0.0/16"
+  cidr_block                       = "10.0.0.0/16"
+  assign_generated_ipv6_cidr_block = true
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = { Name = "dbi360-dev-stage-vpc" }
@@ -106,40 +107,6 @@ resource "aws_vpc" "dbi360_dev_stage_vpc" {
 resource "aws_internet_gateway" "dbi360_dev_stage_igw" {
   vpc_id = aws_vpc.dbi360_dev_stage_vpc.id
   tags   = { Name = "dbi360-dev-stage-igw" }
-}
-
-resource "aws_subnet" "dbi360_dev_stage_public1_2a" {
-  vpc_id            = aws_vpc.dbi360_dev_stage_vpc.id
-  cidr_block        = "10.0.0.0/20"
-  availability_zone = "us-east-2a"
-  tags              = { Name = "dbi360-dev-stage-subnet-public1-us-east-2a" }
-}
-resource "aws_subnet" "dbi360_dev_stage_public2_2b" {
-  vpc_id            = aws_vpc.dbi360_dev_stage_vpc.id
-  cidr_block        = "10.0.16.0/20"
-  availability_zone = "us-east-2b"
-  tags              = { Name = "dbi360-dev-stage-subnet-public2-us-east-2b" }
-}
-resource "aws_subnet" "dbi360_dev_stage_private1_2a" {
-  vpc_id            = aws_vpc.dbi360_dev_stage_vpc.id
-  cidr_block        = "10.0.128.0/20"
-  availability_zone = "us-east-2a"
-  tags              = { Name = "dbi360-dev-stage-subnet-private1-us-east-2a" }
-}
-resource "aws_subnet" "dbi360_dev_stage_private2_2b" {
-  vpc_id            = aws_vpc.dbi360_dev_stage_vpc.id
-  cidr_block        = "10.0.144.0/20"
-  availability_zone = "us-east-2b"
-  tags              = { Name = "dbi360-dev-stage-subnet-private2-us-east-2b" }
-}
-
-resource "aws_route_table" "dbi360_dev_stage_rtb_public" {
-  vpc_id = aws_vpc.dbi360_dev_stage_vpc.id
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.dbi360_dev_stage_igw.id
-  }
-  tags = { Name = "dbi360-dev-stage-rtb-public" }
 }
 
 resource "aws_route_table" "dbi360_dev_stage_rtb_private1_2a" {
@@ -203,4 +170,90 @@ resource "aws_subnet" "meraki_vpc_subnet" {
   cidr_block        = "172.30.0.0/24"
   availability_zone = "us-east-2a"
   tags              = { Name = "Meraki-VPC-Subnet" }
+}
+
+# --- S3 Gateway Endpoint (imported early to prevent route table diffs) ---
+resource "aws_vpc_endpoint" "dev_s3_gateway" {
+  vpc_id            = aws_vpc.dbi360_dev_stage_vpc.id
+  service_name      = "com.amazonaws.us-east-2.s3"
+  vpc_endpoint_type = "Gateway"
+
+  route_table_ids = [
+    aws_route_table.dbi360_dev_stage_rtb_private1_2a.id,
+    aws_route_table.dbi360_dev_stage_rtb_private2_2b.id,
+  ]
+
+  tags = { Name = "dev-s3-gateway-endpoint" }
+}
+
+# --- PATCH: dbi360-dev-stage subnets with EKS tags and IPv6 ---
+# These replace the existing subnet blocks - after appending, remove the old ones above
+
+resource "aws_subnet" "dbi360_dev_stage_public1_2a" {
+  vpc_id            = aws_vpc.dbi360_dev_stage_vpc.id
+  cidr_block        = "10.0.0.0/20"
+  availability_zone = "us-east-2a"
+  ipv6_cidr_block   = "2600:1f16:119d:e800::/64"
+
+  tags = {
+    Name                                     = "dbi360-dev-stage-subnet-public1-us-east-2a"
+    "kubernetes.io/cluster/dbi360-dev-stage" = "shared"
+    "kubernetes.io/cluster/dev-eks-cluster"  = "shared"
+    "kubernetes.io/role/elb"                 = "1"
+  }
+}
+
+resource "aws_subnet" "dbi360_dev_stage_public2_2b" {
+  vpc_id            = aws_vpc.dbi360_dev_stage_vpc.id
+  cidr_block        = "10.0.16.0/20"
+  availability_zone = "us-east-2b"
+  ipv6_cidr_block   = "2600:1f16:119d:e801::/64"
+
+  tags = {
+    Name                                     = "dbi360-dev-stage-subnet-public2-us-east-2b"
+    "kubernetes.io/cluster/dbi360-dev-stage" = "shared"
+    "kubernetes.io/cluster/dev-eks-cluster"  = "shared"
+    "kubernetes.io/role/elb"                 = "1"
+  }
+}
+
+resource "aws_subnet" "dbi360_dev_stage_private1_2a" {
+  vpc_id            = aws_vpc.dbi360_dev_stage_vpc.id
+  cidr_block        = "10.0.128.0/20"
+  availability_zone = "us-east-2a"
+
+  tags = {
+    Name                                     = "dbi360-dev-stage-subnet-private1-us-east-2a"
+    "kubernetes.io/cluster/dbi360-dev-stage" = "shared"
+    "kubernetes.io/role/internal-elb"        = "1"
+  }
+}
+
+resource "aws_subnet" "dbi360_dev_stage_private2_2b" {
+  vpc_id            = aws_vpc.dbi360_dev_stage_vpc.id
+  cidr_block        = "10.0.144.0/20"
+  availability_zone = "us-east-2b"
+
+  tags = {
+    Name                                     = "dbi360-dev-stage-subnet-private2-us-east-2b"
+    "kubernetes.io/cluster/dbi360-dev-stage" = "shared"
+    "kubernetes.io/role/internal-elb"        = "1"
+  }
+}
+
+# --- PATCH: dbi360-dev-stage-rtb-public with IPv6 route ---
+resource "aws_route_table" "dbi360_dev_stage_rtb_public" {
+  vpc_id = aws_vpc.dbi360_dev_stage_vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.dbi360_dev_stage_igw.id
+  }
+
+  route {
+    ipv6_cidr_block = "::/0"
+    gateway_id      = aws_internet_gateway.dbi360_dev_stage_igw.id
+  }
+
+  tags = { Name = "dbi360-dev-stage-rtb-public" }
 }
