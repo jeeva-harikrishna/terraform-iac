@@ -6,13 +6,6 @@ resource "aws_s3_bucket" "application_security_dbi360" {
   bucket = "application-security-dbi360"
 }
 
-resource "aws_s3_bucket" "automatic_s3_upload_test_2026" {
-  bucket = "automatic-s3-upload-test-2026"
-}
-resource "aws_s3_bucket_versioning" "automatic_s3_upload_test_2026" {
-  bucket = "automatic-s3-upload-test-2026"
-  versioning_configuration { status = "Enabled" }
-}
 
 resource "aws_s3_bucket" "aws_cloudtrail_logs_842676018479_19295366" {
   bucket = "aws-cloudtrail-logs-842676018479-19295366"

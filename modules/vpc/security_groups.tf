@@ -331,3 +331,13 @@ resource "aws_security_group" "security_rds_sg" {
   vpc_id      = "vpc-0bb070e4036db1f53"
   tags        = { Name = "security-rds-sg", Environment = "dev", ManagedBy = "terraform", Project = "dbi360" }
 }
+
+resource "aws_security_group" "launch_wizard_17" {
+  name        = "launch-wizard-17"
+  description = "launch-wizard-17 created 2026-10-05T14:23:39.488Z"
+  vpc_id      = "vpc-0d84fba11c63039b4"
+
+  tags = {
+    Name = "launch-wizard-17"
+  }
+}

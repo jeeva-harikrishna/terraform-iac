@@ -1,0 +1,31 @@
+variable "instance_types" {
+  description = "Instance type per EC2 resource"
+  type        = map(string)
+  default     = {
+    "dbi360_wp_php"              = "t2.xlarge"
+    "aster_wp"                   = "t2.medium"
+    "zyler_wp"                   = "t2.medium"
+    "confluxhr_wp"               = "t3.medium"
+    "gomeet_wp"                  = "t2.small"
+    "nexus_demo"                 = "t2.micro"
+    "gj_ca_wp_website"           = "t2.medium"
+    "etl_akhilesh"               = "t3.large"
+    "jeevahealthcare_wp_n"       = "t2.micro"
+    "sanvi_ecr"                  = "t2.micro"
+    "rds_client"                 = "t2.micro"
+    "etl_scrapper_akhilesh"      = "t2.medium"
+    "etl_dev_scrapper"           = "t2.large"
+    "zyler_old"                  = "t2.micro"
+    "app_security_test"          = "t2.xlarge"
+    "ingrediant_fetch_akhilesh"  = "c5.4xlarge"
+    "git_dev"                    = "c5.large"
+    "github_actions_runner"      = "c5d.2xlarge"
+    "windows_server_akhilesh"    = "t3.medium"
+    "dev_ch_db_dipti_nayak"      = "t2.micro"
+    "kafka_uma"                  = "t2.large"
+    "dbi_chat_widget"            = "t2.medium"
+    "click_house_demo_new"       = "r6i.xlarge"
+    "clickhouse_server_demo"     = "r6i.xlarge"
+    "webserver"                  = "t3.micro"
+  }
+}

@@ -1,0 +1,596 @@
+import {
+  to = module.ec2.aws_eip.dbi360_dev_stage_nat_eip
+  id = "eipalloc-0ba2f3b3c1b8ce99f"
+}
+import {
+  to = module.ec2.aws_eip.eip_044115db
+  id = "eipalloc-027c71650044115db"
+}
+import {
+  to = module.ec2.aws_eip.eip_1cd1688a
+  id = "eipalloc-0f4996f861cd1688a"
+}
+import {
+  to = module.ec2.aws_eip.eip_1ed86640
+  id = "eipalloc-03349b9d31ed86640"
+}
+import {
+  to = module.ec2.aws_eip.eip_39f12f5d
+  id = "eipalloc-09138659139f12f5d"
+}
+import {
+  to = module.ec2.aws_eip.eip_5bb4fd6d
+  id = "eipalloc-0b8d930d45bb4fd6d"
+}
+import {
+  to = module.ec2.aws_eip.eip_ddf92523
+  id = "eipalloc-03eab6222ddf92523"
+}
+import {
+  to = module.ec2.aws_eip.github_actions_runner
+  id = "eipalloc-081c0ea4c064c29cf"
+}
+import {
+  to = module.ec2.aws_eip.security_nat_eip
+  id = "eipalloc-0ed77668c89bebcec"
+}
+import {
+  to = module.ec2.aws_lb.development_alb
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:loadbalancer/app/development-alb/11d2c3de04a7d686"
+}
+import {
+  to = module.ec2.aws_lb.development_alb_2
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:loadbalancer/app/development-alb-2/747eafb0e99b7502"
+}
+import {
+  to = module.ec2.aws_lb.security_alb
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:loadbalancer/app/security-alb/b1e76234b91ff21d"
+}
+import {
+  to = module.ec2.aws_lb.staging_alb
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:loadbalancer/app/staging-alb/1229cd539c766795"
+}
+import {
+  to = module.ec2.aws_lb_listener.development_alb_2_http
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:listener/app/development-alb-2/747eafb0e99b7502/6b493a49147260e8"
+}
+import {
+  to = module.ec2.aws_lb_listener.development_alb_2_https
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:listener/app/development-alb-2/747eafb0e99b7502/b3881a28baeb4fa9"
+}
+import {
+  to = module.ec2.aws_lb_listener.development_alb_http
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:listener/app/development-alb/11d2c3de04a7d686/23915237d4ea26cd"
+}
+import {
+  to = module.ec2.aws_lb_listener.development_alb_https
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:listener/app/development-alb/11d2c3de04a7d686/6946f1bf264fe257"
+}
+import {
+  to = module.ec2.aws_lb_listener.security_alb_http
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:listener/app/security-alb/b1e76234b91ff21d/af2896ec462feceb"
+}
+import {
+  to = module.ec2.aws_lb_listener.security_alb_https
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:listener/app/security-alb/b1e76234b91ff21d/b58786fc47f12912"
+}
+import {
+  to = module.ec2.aws_lb_listener.staging_alb_http
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:listener/app/staging-alb/1229cd539c766795/3c6be7002ba95e90"
+}
+import {
+  to = module.ec2.aws_lb_listener.staging_alb_https
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:listener/app/staging-alb/1229cd539c766795/d55128b411462b3b"
+}
+import {
+  to = module.ec2.aws_lb_target_group.ai_chatbot_website_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/ai-chatbot-website-tg/4d34ad1cb639fddb"
+}
+import {
+  to = module.ec2.aws_lb_target_group.all_email_receive_webhook_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/all-email-receive-webhook-tg/8206b8213ff08fb1"
+}
+import {
+  to = module.ec2.aws_lb_target_group.aster_demo_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/aster-demo-tg/1cb38028c8e68852"
+}
+import {
+  to = module.ec2.aws_lb_target_group.aster_landing_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/aster-landing-tg/5e08810f14913f16"
+}
+import {
+  to = module.ec2.aws_lb_target_group.aster_node_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/aster-node-tg/9de480aa69b928a0"
+}
+import {
+  to = module.ec2.aws_lb_target_group.asterdocs_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/asterdocs-frontend-tg/cfea56c4efe665dc"
+}
+import {
+  to = module.ec2.aws_lb_target_group.audit_management_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/audit-management-backend-tg/9c8e1e3e931f0dea"
+}
+import {
+  to = module.ec2.aws_lb_target_group.audit_management_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/audit-management-frontend-tg/f97f3d6438d6a037"
+}
+import {
+  to = module.ec2.aws_lb_target_group.audit_trail_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/audit-trail-frontend-tg/1ab1189fcd4194fe"
+}
+import {
+  to = module.ec2.aws_lb_target_group.authorization_v2_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/authorization-v2-tg/70fcd37329aa5d84"
+}
+import {
+  to = module.ec2.aws_lb_target_group.authserver_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/authserver-backend-tg/81a029b5c176088a"
+}
+import {
+  to = module.ec2.aws_lb_target_group.authserver_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/authserver-frontend-tg/c24279f565617dba"
+}
+import {
+  to = module.ec2.aws_lb_target_group.b2badmin_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/b2badmin-backend-tg/1fadc3fb83f3141f"
+}
+import {
+  to = module.ec2.aws_lb_target_group.b2badmin_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/b2badmin-frontend-tg/e570409f442533db"
+}
+import {
+  to = module.ec2.aws_lb_target_group.biotrace_next_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/biotrace-next-tg/4493d9ad3e082bdc"
+}
+import {
+  to = module.ec2.aws_lb_target_group.buyersflow_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/buyersflow-backend-tg/87bd08c09debd282"
+}
+import {
+  to = module.ec2.aws_lb_target_group.buyersflow_caption_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/buyersflow-caption-tg/01dda87519a692a9"
+}
+import {
+  to = module.ec2.aws_lb_target_group.buyersflow_new
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/buyersflow-new/0572974dfda94a24"
+}
+import {
+  to = module.ec2.aws_lb_target_group.buyersflow_new_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/buyersflow-new-tg/09d78834100e1f39"
+}
+import {
+  to = module.ec2.aws_lb_target_group.buyersflow_website_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/buyersflow-website-tg/943b60586158a77e"
+}
+import {
+  to = module.ec2.aws_lb_target_group.calculator_v2
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/calculator-v2/442c60b59b1e68f9"
+}
+import {
+  to = module.ec2.aws_lb_target_group.calculator_v2_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/calculator-v2-tg/dca4543b1d1ebe87"
+}
+import {
+  to = module.ec2.aws_lb_target_group.clickhouse_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/clickhouse-tg/02a42d58fdb491b0"
+}
+import {
+  to = module.ec2.aws_lb_target_group.clicklens_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/clicklens-tg/fc6d38821dafb596"
+}
+import {
+  to = module.ec2.aws_lb_target_group.communication_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/communication-backend-tg/1ea139913fd8bfa3"
+}
+import {
+  to = module.ec2.aws_lb_target_group.communication_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/communication-frontend-tg/9a7a68d653578fa2"
+}
+import {
+  to = module.ec2.aws_lb_target_group.company_research_api_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/company-research-api-backend-tg/0e1d07204c2fc0fc"
+}
+import {
+  to = module.ec2.aws_lb_target_group.company_research_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/company-research-backend-tg/274ea57b8de71616"
+}
+import {
+  to = module.ec2.aws_lb_target_group.compliance_service_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/compliance-service-tg/6694c90b9928e22c"
+}
+import {
+  to = module.ec2.aws_lb_target_group.confluxhr_website_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/confluxhr-website-frontend-tg/fd7631f5def51aee"
+}
+import {
+  to = module.ec2.aws_lb_target_group.customer_map_service_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/customer-map-service-backend-tg/d10d8fbeeb634a85"
+}
+import {
+  to = module.ec2.aws_lb_target_group.customer_map_service_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/customer-map-service-frontend-tg/0d9fe67b458bc063"
+}
+import {
+  to = module.ec2.aws_lb_target_group.dbi_chat_area_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/dbi-chat-area-tg/7070d4926bf20231"
+}
+import {
+  to = module.ec2.aws_lb_target_group.dbi_chat_widget_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/dbi-chat-widget-tg/773258881610b697"
+}
+import {
+  to = module.ec2.aws_lb_target_group.dbi_hubspot_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/dbi-hubspot-backend-tg/20d84f49b30cd1fd"
+}
+import {
+  to = module.ec2.aws_lb_target_group.dbi_websocket_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/dbi-websocket-tg/50594c9ffc8506c3"
+}
+import {
+  to = module.ec2.aws_lb_target_group.drmallad_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/drmallad-tg/253d440c5bcdeff5"
+}
+import {
+  to = module.ec2.aws_lb_target_group.ecommerce_frontend_next_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/ecommerce-frontend-next-tg/ebfc0acdb9c82d24"
+}
+import {
+  to = module.ec2.aws_lb_target_group.entity_service_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/entity-service-tg/cbd420028a18a521"
+}
+import {
+  to = module.ec2.aws_lb_target_group.exit_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/exit-frontend-tg/f98e4977002ece76"
+}
+import {
+  to = module.ec2.aws_lb_target_group.farm_management_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/farm-management-tg/721bd93632c87e6f"
+}
+import {
+  to = module.ec2.aws_lb_target_group.finance_backend_service_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/finance-backend-service-tg/76b8ee9420513bae"
+}
+import {
+  to = module.ec2.aws_lb_target_group.finance_frontend_service_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/finance-frontend-service-tg/a202bbebcd5823f7"
+}
+import {
+  to = module.ec2.aws_lb_target_group.finance_reports_service_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/finance-reports-service-tg/6e18208eb351867f"
+}
+import {
+  to = module.ec2.aws_lb_target_group.findsuppliers_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/findsuppliers-backend-tg/209f5fe72419cae7"
+}
+import {
+  to = module.ec2.aws_lb_target_group.findsuppliers_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/findsuppliers-frontend-tg/459a7bfd5d50395d"
+}
+import {
+  to = module.ec2.aws_lb_target_group.findsuppliers_website_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/findsuppliers-website-tg/81305595c177bbd2"
+}
+import {
+  to = module.ec2.aws_lb_target_group.gj_ecommerce_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/gj-ecommerce-backend-tg/7a912dd99d81f26f"
+}
+import {
+  to = module.ec2.aws_lb_target_group.gjca_ecommerce_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/gjca-ecommerce-backend-tg/36779e131ee293d7"
+}
+import {
+  to = module.ec2.aws_lb_target_group.gjca_ecommerce_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/gjca-ecommerce-frontend-tg/e66c84e7389d4edb"
+}
+import {
+  to = module.ec2.aws_lb_target_group.hrms_attendance_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/hrms-attendance-tg/a0534ae413d3ce3a"
+}
+import {
+  to = module.ec2.aws_lb_target_group.hrms_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/hrms-backend-tg/ebc2c0d8d30a9e36"
+}
+import {
+  to = module.ec2.aws_lb_target_group.hrms_careeer_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/hrms-careeer-frontend-tg/19f0793ae1d0b893"
+}
+import {
+  to = module.ec2.aws_lb_target_group.hrms_employee_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/hrms-employee-tg/f11587084a68829a"
+}
+import {
+  to = module.ec2.aws_lb_target_group.hrms_exit_process_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/hrms-exit-process-frontend-tg/b403c53ff7d5f5db"
+}
+import {
+  to = module.ec2.aws_lb_target_group.hrms_inventory_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/hrms-inventory-tg/fb350197c7ecc7a5"
+}
+import {
+  to = module.ec2.aws_lb_target_group.hrms_payroll_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/hrms-payroll-tg/3b2aa6266aa8f289"
+}
+import {
+  to = module.ec2.aws_lb_target_group.hrms_recruitment_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/hrms-recruitment-frontend-tg/16b87d0be49cb141"
+}
+import {
+  to = module.ec2.aws_lb_target_group.hrms_report_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/hrms-report-tg/21bc988e60c05054"
+}
+import {
+  to = module.ec2.aws_lb_target_group.inventory_service_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/inventory-service-backend-tg/6519138ec7531671"
+}
+import {
+  to = module.ec2.aws_lb_target_group.inventory_service_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/inventory-service-frontend-tg/61ca06b4c1966196"
+}
+import {
+  to = module.ec2.aws_lb_target_group.jeevahealthcare_website_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/jeevahealthcare-website-tg/2e90c6a4ccc7a7cf"
+}
+import {
+  to = module.ec2.aws_lb_target_group.lead_qualifier_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/lead-qualifier-backend-tg/be4ae8d901c7cb8f"
+}
+import {
+  to = module.ec2.aws_lb_target_group.lead_qualifier_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/lead-qualifier-frontend-tg/f52e3bf2459be391"
+}
+import {
+  to = module.ec2.aws_lb_target_group.marketing_backend_service_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/marketing-backend-service-tg/250e3640afde0010"
+}
+import {
+  to = module.ec2.aws_lb_target_group.marketing_frontend_service_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/marketing-frontend-service-tg/0a3c1bd984d4da46"
+}
+import {
+  to = module.ec2.aws_lb_target_group.master_configuration_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/master-configuration-backend-tg/4e9e25f9fd03623b"
+}
+import {
+  to = module.ec2.aws_lb_target_group.master_product_service_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/master-product-service-tg/5847e548c67956bc"
+}
+import {
+  to = module.ec2.aws_lb_target_group.mfg_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/mfg-backend-tg/bf76adf586c63b55"
+}
+import {
+  to = module.ec2.aws_lb_target_group.mfg_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/mfg-frontend-tg/fa477407f613c95e"
+}
+import {
+  to = module.ec2.aws_lb_target_group.mfg_salesorder_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/mfg-salesorder-backend-tg/c4c1267704c4ed5b"
+}
+import {
+  to = module.ec2.aws_lb_target_group.mfg_salesorder_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/mfg-salesorder-frontend-tg/9739790e6215c483"
+}
+import {
+  to = module.ec2.aws_lb_target_group.my_trade_guru_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/my-trade-guru-backend-tg/6d0b4481a43229a4"
+}
+import {
+  to = module.ec2.aws_lb_target_group.my_trade_guru_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/my-trade-guru-frontend-tg/2bbb5ecc728fca5b"
+}
+import {
+  to = module.ec2.aws_lb_target_group.n8n_demo_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/n8n-demo-tg/1bc288d7664b39b7"
+}
+import {
+  to = module.ec2.aws_lb_target_group.n8n_target_group
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/n8n-target-group/9eb217950efb025d"
+}
+import {
+  to = module.ec2.aws_lb_target_group.nexus_fast_api_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/nexus-fast-api-tg/e1b40889881e1b99"
+}
+import {
+  to = module.ec2.aws_lb_target_group.nexus_landing_next_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/nexus-landing-next-tg/2a01e85288e9d367"
+}
+import {
+  to = module.ec2.aws_lb_target_group.nexus_react_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/nexus-react-frontend-tg/9ebedac4f16b1635"
+}
+import {
+  to = module.ec2.aws_lb_target_group.notification_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/notification-backend-tg/9586f8b69ca59871"
+}
+import {
+  to = module.ec2.aws_lb_target_group.notification_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/notification-frontend-tg/1e18247d9fd9ba0b"
+}
+import {
+  to = module.ec2.aws_lb_target_group.pricing_engine_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/pricing-engine-tg/d9316b2af18e1ebf"
+}
+import {
+  to = module.ec2.aws_lb_target_group.purchase_intelligence_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/purchase-intelligence-tg/dad6ec4a7602fd32"
+}
+import {
+  to = module.ec2.aws_lb_target_group.purchase_service_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/purchase-service-backend-tg/cbb7f376aac19f07"
+}
+import {
+  to = module.ec2.aws_lb_target_group.purchase_service_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/purchase-service-frontend-tg/1a801e80869743f7"
+}
+import {
+  to = module.ec2.aws_lb_target_group.regos_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/regos-tg/9bb8312c377edc04"
+}
+import {
+  to = module.ec2.aws_lb_target_group.reports_service_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/reports-service-tg/483619a0086e8511"
+}
+import {
+  to = module.ec2.aws_lb_target_group.revenue_incentive_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/revenue-incentive-tg/b492542212b4c4be"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sales_clickhouse_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sales-clickhouse-tg/90fe9db9de51c1cf"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sales_dashboard_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sales-dashboard-backend-tg/ac00b9fa4ec6a18d"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sales_dashboard_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sales-dashboard-frontend-tg/4d0ab2690f74bc7b"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sales_service_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sales-service-backend-tg/e7b699bb845a0fcc"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sales_service_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sales-service-frontend-tg/15655e8c52ea3871"
+}
+import {
+  to = module.ec2.aws_lb_target_group.security_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/security-tg/5fc53644415f2088"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sgl_ecommerce_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sgl-ecommerce-backend-tg/edce09e613f0d4db"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sgl_ecommerce_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sgl-ecommerce-frontend-tg/42f9b39a6ecbdbb4"
+}
+import {
+  to = module.ec2.aws_lb_target_group.simplewebpage
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/simplewebpage/f3ead7d7b9e23268"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sla_rule_engine_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sla-rule-engine-backend-tg/61c3491a8483f6bc"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sla_rule_engine_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sla-rule-engine-frontend-tg/aa8bc8dda1158cc0"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sourcing_backend_service_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sourcing-backend-service-tg/8d5f9e70b8f204df"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sourcing_frontend_service_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sourcing-frontend-service-tg/e8e711c0a9f03a6d"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sso_litigation_management_api_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sso-litigation-management-api-tg/ab2506f26788c64f"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sso_litigation_management_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sso-litigation-management-tg/e23cc97be03f406d"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sso_mis_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sso-mis-tg/91cb464a3feed21e"
+}
+import {
+  to = module.ec2.aws_lb_target_group.sso_project_management_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/sso-project-management-tg/ac8e8f506f6e8b5b"
+}
+import {
+  to = module.ec2.aws_lb_target_group.staging_aster_node_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/staging-aster-node-tg/7677833e040ac98b"
+}
+import {
+  to = module.ec2.aws_lb_target_group.staging_asterdocs_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/staging-asterdocs-frontend-tg/3231b226f90d0e14"
+}
+import {
+  to = module.ec2.aws_lb_target_group.staging_authserver_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/staging-authserver-backend-tg/da716b7892c35565"
+}
+import {
+  to = module.ec2.aws_lb_target_group.staging_authserver_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/staging-authserver-frontend-tg/0c4ebd109f79dd5c"
+}
+import {
+  to = module.ec2.aws_lb_target_group.staging_supplier_kpi_b_85763a_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/staging-supplier-kpi-b-85763a-tg/6eacf536dc45252e"
+}
+import {
+  to = module.ec2.aws_lb_target_group.staging_supplier_kpi_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/staging-supplier-kpi-frontend-tg/99c49177588a0212"
+}
+import {
+  to = module.ec2.aws_lb_target_group.supplier_kpi_backend_dev_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/supplier-kpi-backend-dev-tg/1737e3f1d572f5ec"
+}
+import {
+  to = module.ec2.aws_lb_target_group.supplier_kpi_backend_v2_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/supplier-kpi-backend-v2-tg/d5f1a1d2feeda1f4"
+}
+import {
+  to = module.ec2.aws_lb_target_group.supplier_kpi_dev_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/supplier-kpi-dev-tg/602eb52cd505980a"
+}
+import {
+  to = module.ec2.aws_lb_target_group.supplier_kpi_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/supplier-kpi-frontend-tg/7d2027ac139723ba"
+}
+import {
+  to = module.ec2.aws_lb_target_group.synapsebiolab_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/synapsebiolab-tg/680987b608c5afb4"
+}
+import {
+  to = module.ec2.aws_lb_target_group.task_management_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/task-management-tg/f7b26b7513aad0b7"
+}
+import {
+  to = module.ec2.aws_lb_target_group.task_service_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/task-service-frontend-tg/adae0e26f89b5c7b"
+}
+import {
+  to = module.ec2.aws_lb_target_group.taskmanagement_website_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/taskmanagement-website-tg/a35ac279b88402aa"
+}
+import {
+  to = module.ec2.aws_lb_target_group.ticketing_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/ticketing-frontend-tg/adad2aae56f63053"
+}
+import {
+  to = module.ec2.aws_lb_target_group.ticketing_system_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/ticketing-system-backend-tg/c7357aa185a13963"
+}
+import {
+  to = module.ec2.aws_lb_target_group.ticketing_system_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/ticketing-system-frontend-tg/230a2fe056e61c39"
+}
+import {
+  to = module.ec2.aws_lb_target_group.vmi_service_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/vmi-service-backend-tg/710726192692d5e8"
+}
+import {
+  to = module.ec2.aws_lb_target_group.vmi_service_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/vmi-service-frontend-tg/9c0b48d06c08d7eb"
+}
+import {
+  to = module.ec2.aws_lb_target_group.wms_service_backend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/wms-service-backend-tg/50628fbb54428253"
+}
+import {
+  to = module.ec2.aws_lb_target_group.wms_service_frontend_tg
+  id = "arn:aws:elasticloadbalancing:us-east-2:842676018479:targetgroup/wms-service-frontend-tg/53dbe8eeea635dbe"
+}
+import {
+  to = module.ec2.aws_nat_gateway.dbi360_dev_stage_nat
+  id = "nat-03f25ca7bc9110f9d"
+}
+import {
+  to = module.ec2.aws_nat_gateway.security_nat
+  id = "nat-05b347ea46e616f47"
+}

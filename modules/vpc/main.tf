@@ -257,3 +257,59 @@ resource "aws_route_table" "dbi360_dev_stage_rtb_public" {
 
   tags = { Name = "dbi360-dev-stage-rtb-public" }
 }
+
+# -------------------------------------------------------
+# VPC Endpoints — Interface type (dbi360-dev-stage-vpc)
+# -------------------------------------------------------
+
+resource "aws_vpc_endpoint" "dev_ecr_dkr" {
+  vpc_id              = aws_vpc.dbi360_dev_stage_vpc.id
+  service_name        = "com.amazonaws.us-east-2.ecr.dkr"
+  vpc_endpoint_type   = "Interface"
+  subnet_ids          = [aws_subnet.dbi360_dev_stage_private1_2a.id, aws_subnet.dbi360_dev_stage_private2_2b.id]
+  security_group_ids  = [aws_security_group.development_alb_sg.id]
+  private_dns_enabled = true
+
+  tags = {
+    Name = "dev-ecr-dkr-endpoint"
+  }
+}
+
+resource "aws_vpc_endpoint" "dev_ecr_api" {
+  vpc_id              = aws_vpc.dbi360_dev_stage_vpc.id
+  service_name        = "com.amazonaws.us-east-2.ecr.api"
+  vpc_endpoint_type   = "Interface"
+  subnet_ids          = [aws_subnet.dbi360_dev_stage_private1_2a.id, aws_subnet.dbi360_dev_stage_private2_2b.id]
+  security_group_ids  = [aws_security_group.dev_vpc_endpoints_sg.id]
+  private_dns_enabled = true
+
+  tags = {
+    Name = "dev-ecr-api-endpoint"
+  }
+}
+
+resource "aws_vpc_endpoint" "dev_secretsmanager" {
+  vpc_id              = aws_vpc.dbi360_dev_stage_vpc.id
+  service_name        = "com.amazonaws.us-east-2.secretsmanager"
+  vpc_endpoint_type   = "Interface"
+  subnet_ids          = [aws_subnet.dbi360_dev_stage_private1_2a.id, aws_subnet.dbi360_dev_stage_private2_2b.id]
+  security_group_ids  = [aws_security_group.dev_vpc_endpoints_sg.id]
+  private_dns_enabled = true
+
+  tags = {
+    Name = "dev-secretsmanager-endpoint"
+  }
+}
+
+resource "aws_vpc_endpoint" "dev_logs" {
+  vpc_id              = aws_vpc.dbi360_dev_stage_vpc.id
+  service_name        = "com.amazonaws.us-east-2.logs"
+  vpc_endpoint_type   = "Interface"
+  subnet_ids          = [aws_subnet.dbi360_dev_stage_private1_2a.id, aws_subnet.dbi360_dev_stage_private2_2b.id]
+  security_group_ids  = [aws_security_group.dev_vpc_endpoints_sg.id]
+  private_dns_enabled = true
+
+  tags = {
+    Name = "dev-cloudwatch-logs-endpoint"
+  }
+}

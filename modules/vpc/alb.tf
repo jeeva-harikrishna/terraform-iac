@@ -1066,3 +1066,961 @@ resource "aws_lb_target_group" "wms_service_frontend_tg" {
   vpc_id      = var.vpc_id
   lifecycle { ignore_changes = all }
 }
+
+# ── Missing TGs added 2026-10-05 ──────────────────────────────────────────
+resource "aws_lb_target_group" "hrms_recruitment_frontend_tg" {
+  name        = "hrms-recruitment-frontend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "hrms_report_tg" {
+  name        = "hrms-report-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "inventory_service_backend_tg" {
+  name        = "inventory-service-backend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "inventory_service_frontend_tg" {
+  name        = "inventory-service-frontend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "jeevahealthcare_website_tg" {
+  name        = "jeevahealthcare-website-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 5
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 2
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "lead_qualifier_backend_tg" {
+  name        = "lead-qualifier-backend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 15
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "lead_qualifier_frontend_tg" {
+  name        = "lead-qualifier-frontend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 15
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "marketing_backend_service_tg" {
+  name        = "marketing-backend-service-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 15
+    matcher             = "200"
+    path                = "/api/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "marketing_frontend_service_tg" {
+  name        = "marketing-frontend-service-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 15
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "master_configuration_backend_tg" {
+  name        = "master-configuration-backend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 5
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 2
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "master_product_service_tg" {
+  name        = "master-product-service-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "mfg_backend_tg" {
+  name        = "mfg-backend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "mfg_frontend_tg" {
+  name        = "mfg-frontend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "mfg_salesorder_backend_tg" {
+  name        = "mfg-salesorder-backend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/api/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "mfg_salesorder_frontend_tg" {
+  name        = "mfg-salesorder-frontend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "my_trade_guru_backend_tg" {
+  name        = "my-trade-guru-backend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 5
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 2
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "my_trade_guru_frontend_tg" {
+  name        = "my-trade-guru-frontend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 5
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 2
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "n8n_demo_tg" {
+  name        = "n8n-demo-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/healthz"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "n8n_target_group" {
+  name        = "n8n-target-group"
+  port        = 5678
+  protocol    = "HTTP"
+  vpc_id      = "vpc-0bb070e4036db1f53"
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 5
+    interval            = 30
+    matcher             = "200"
+    path                = "/"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 2
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "nexus_fast_api_tg" {
+  name        = "nexus-fast-api-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "nexus_landing_next_tg" {
+  name        = "nexus-landing-next-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "nexus_react_frontend_tg" {
+  name        = "nexus-react-frontend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 5
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 2
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "notification_backend_tg" {
+  name        = "notification-backend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "notification_frontend_tg" {
+  name        = "notification-frontend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "pricing_engine_tg" {
+  name        = "pricing-engine-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 5
+    interval            = 30
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 2
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "purchase_intelligence_tg" {
+  name        = "purchase-intelligence-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 15
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+resource "aws_lb_target_group" "purchase_service_backend_tg" {
+  name        = "purchase-service-backend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    interval            = 15
+    matcher             = "200"
+    path                = "/health"
+    port                = "traffic-port"
+    protocol            = "HTTP"
+    timeout             = 5
+    unhealthy_threshold = 3
+  }
+
+  stickiness {
+    enabled = false
+    type    = "lb_cookie"
+  }
+
+  deregistration_delay = 30
+
+  tags = {
+  }
+}
+
+
+# ── ALB Listeners ──────────────────────────────────────────────
+
+resource "aws_lb_listener" "security_alb_http" {
+  load_balancer_arn = aws_lb.security_alb.arn
+  port              = 80
+  protocol          = "HTTP"
+
+  default_action {
+    type = "redirect"
+    redirect {
+      protocol    = "HTTPS"
+      port        = "443"
+      host        = "#{host}"
+      path        = "/#{path}"
+      query       = "#{query}"
+      status_code = "HTTP_301"
+    }
+  }
+
+  lifecycle { ignore_changes = all }
+}
+
+resource "aws_lb_listener" "security_alb_https" {
+  load_balancer_arn = aws_lb.security_alb.arn
+  port              = 443
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-Res-2021-06"
+  certificate_arn   = "arn:aws:acm:us-east-2:842676018479:certificate/df06a723-804c-4a81-b2e5-52e8040480e1"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.security_tg.arn
+  }
+
+  lifecycle { ignore_changes = all }
+}
+
+resource "aws_lb_listener" "development_alb_http" {
+  load_balancer_arn = aws_lb.development_alb.arn
+  port              = 80
+  protocol          = "HTTP"
+
+  default_action {
+    type = "redirect"
+    redirect {
+      protocol    = "HTTPS"
+      port        = "443"
+      host        = "#{host}"
+      path        = "/#{path}"
+      query       = "#{query}"
+      status_code = "HTTP_301"
+    }
+  }
+
+  lifecycle { ignore_changes = all }
+}
+
+resource "aws_lb_listener" "development_alb_https" {
+  load_balancer_arn = aws_lb.development_alb.arn
+  port              = 443
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-Res-PQ-2025-09"
+  certificate_arn   = "arn:aws:acm:us-east-2:842676018479:certificate/38e84378-57b9-4e8b-b230-0dd33866ab9d"
+
+  default_action {
+    type         = "fixed-response"
+    fixed_response {
+      message_body = "Not Found"
+      status_code  = "404"
+      content_type = "text/plain"
+    }
+  }
+
+  lifecycle { ignore_changes = all }
+}
+
+resource "aws_lb_listener" "development_alb_2_http" {
+  load_balancer_arn = aws_lb.development_alb_2.arn
+  port              = 80
+  protocol          = "HTTP"
+
+  default_action {
+    type = "redirect"
+    redirect {
+      protocol    = "HTTPS"
+      port        = "443"
+      host        = "#{host}"
+      path        = "/#{path}"
+      query       = "#{query}"
+      status_code = "HTTP_301"
+    }
+  }
+
+  lifecycle { ignore_changes = all }
+}
+
+resource "aws_lb_listener" "development_alb_2_https" {
+  load_balancer_arn = aws_lb.development_alb_2.arn
+  port              = 443
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-Res-PQ-2025-09"
+  certificate_arn   = "arn:aws:acm:us-east-2:842676018479:certificate/38e84378-57b9-4e8b-b230-0dd33866ab9d"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.ticketing_system_backend_tg.arn
+  }
+
+  lifecycle { ignore_changes = all }
+}
+
+resource "aws_lb_listener" "staging_alb_http" {
+  load_balancer_arn = aws_lb.staging_alb.arn
+  port              = 80
+  protocol          = "HTTP"
+
+  default_action {
+    type = "redirect"
+    redirect {
+      protocol    = "HTTPS"
+      port        = "443"
+      host        = "#{host}"
+      path        = "/#{path}"
+      query       = "#{query}"
+      status_code = "HTTP_301"
+    }
+  }
+
+  lifecycle { ignore_changes = all }
+}
+
+resource "aws_lb_listener" "staging_alb_https" {
+  load_balancer_arn = aws_lb.staging_alb.arn
+  port              = 443
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-Res-PQ-2025-09"
+  certificate_arn   = "arn:aws:acm:us-east-2:842676018479:certificate/ee42438f-4c73-4cd9-8984-937778a4fd1f"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.staging_supplier_kpi_frontend_tg.arn
+  }
+
+  lifecycle { ignore_changes = all }
+}
