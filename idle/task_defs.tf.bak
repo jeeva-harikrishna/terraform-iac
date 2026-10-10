@@ -1,0 +1,755 @@
+# Idle/orphan task definitions
+
+resource "aws_ecs_task_definition" "clickhouse_task_full_r2" {
+  family                   = "clickhouse-task-full"
+  network_mode             = "awsvpc"
+  cpu                      = "2048"
+  memory                   = "8192"
+  execution_role_arn       = "arn:aws:iam::842676018479:role/SecurityECSTaskExecutionRole"
+  task_role_arn            = "arn:aws:iam::842676018479:role/SecurityECSTaskRole"
+  requires_compatibilities = ["FARGATE"]
+  container_definitions    = <<CONTAINER_DEF
+[
+  {
+    "name": "clickhouse",
+    "image": "clickhouse/clickhouse-server:latest",
+    "cpu": 0,
+    "memory": 0,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 8123,
+        "hostPort": 8123,
+        "protocol": "tcp"
+      },
+      {
+        "containerPort": 9000,
+        "hostPort": 9000,
+        "protocol": "tcp"
+      }
+    ],
+    "environment": [
+      {
+        "name": "CLICKHOUSE_USER",
+        "value": "admin"
+      },
+      {
+        "name": "CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT",
+        "value": "1"
+      },
+      {
+        "name": "CLICKHOUSE_PASSWORD",
+        "value": "clickhouse123"
+      },
+      {
+        "name": "CLICKHOUSE_DB",
+        "value": "default"
+      },
+      {
+        "name": "KAFKA_BROKERS",
+        "value": "kafka.kafka.internal:9092"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/clickhouse-task",
+        "awslogs-region": "us-east-2",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]
+CONTAINER_DEF
+  lifecycle {
+    ignore_changes = [container_definitions]
+  }
+}
+
+resource "aws_ecs_task_definition" "clicklens_task_r1" {
+  family                   = "clicklens-task"
+  network_mode             = "awsvpc"
+  cpu                      = "512"
+  memory                   = "1024"
+  execution_role_arn       = "arn:aws:iam::842676018479:role/SecurityECSTaskExecutionRole"
+  task_role_arn            = "arn:aws:iam::842676018479:role/SecurityECSTaskRole"
+  requires_compatibilities = ["FARGATE"]
+  container_definitions    = <<CONTAINER_DEF
+[
+  {
+    "name": "clicklens",
+    "image": "ghcr.io/jeeva-uma/clicklens:latest",
+    "cpu": 0,
+    "memory": 0,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 3000,
+        "hostPort": 3000,
+        "protocol": "tcp"
+      }
+    ],
+    "environment": [
+      {
+        "name": "NODE_ENV",
+        "value": "production"
+      },
+      {
+        "name": "DISABLE_SECURE_COOKIES",
+        "value": "true"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/clicklens-task",
+        "awslogs-region": "us-east-2",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]
+CONTAINER_DEF
+  lifecycle {
+    ignore_changes = [container_definitions]
+  }
+}
+
+resource "aws_ecs_task_definition" "clicklens_task_final_r4" {
+  family                   = "clicklens-task-final"
+  network_mode             = "awsvpc"
+  cpu                      = "512"
+  memory                   = "1024"
+  execution_role_arn       = "arn:aws:iam::842676018479:role/SecurityECSTaskExecutionRole"
+  task_role_arn            = "arn:aws:iam::842676018479:role/SecurityECSTaskRole"
+  requires_compatibilities = ["FARGATE"]
+  container_definitions    = <<CONTAINER_DEF
+[
+  {
+    "name": "clicklens",
+    "image": "842676018479.dkr.ecr.us-east-2.amazonaws.com/clickhouse:clicklens",
+    "cpu": 0,
+    "memory": 0,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 3000,
+        "hostPort": 3000,
+        "protocol": "tcp"
+      }
+    ],
+    "environment": [
+      {
+        "name": "KAFKA_HOST",
+        "value": "kafka.kafka.internal"
+      },
+      {
+        "name": "LENS_USER",
+        "value": "admin"
+      },
+      {
+        "name": "KAFKA_BROKER",
+        "value": "kafka.kafka.internal:9092"
+      },
+      {
+        "name": "CLICKHOUSE_USER",
+        "value": "admin"
+      },
+      {
+        "name": "CLICKHOUSE_HOST",
+        "value": "clickhouse.kafka.internal"
+      },
+      {
+        "name": "CLICKHOUSE_PORT",
+        "value": "8123"
+      },
+      {
+        "name": "SESSION_SECRET",
+        "value": "07a10ab3831e03726ac495e656234c98acbbc08b5fd784452dad94653c16f587"
+      },
+      {
+        "name": "CLICKHOUSE_URL",
+        "value": "http://clickhouse.kafka.internal:8123"
+      },
+      {
+        "name": "NODE_ENV",
+        "value": "production"
+      },
+      {
+        "name": "DISABLE_SECURE_COOKIES",
+        "value": "true"
+      },
+      {
+        "name": "KAFKA_PORT",
+        "value": "9092"
+      },
+      {
+        "name": "CLICKHOUSE_DATABASE",
+        "value": "default"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/clicklens-task",
+        "awslogs-region": "us-east-2",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]
+CONTAINER_DEF
+  lifecycle {
+    ignore_changes = [container_definitions]
+  }
+}
+
+resource "aws_ecs_task_definition" "kafka_connect_task_fixed_r6" {
+  family                   = "kafka-connect-task-fixed"
+  network_mode             = "awsvpc"
+  cpu                      = "1024"
+  memory                   = "2048"
+  execution_role_arn       = "arn:aws:iam::842676018479:role/SecurityECSTaskExecutionRole"
+  task_role_arn            = "arn:aws:iam::842676018479:role/SecurityECSTaskRole"
+  requires_compatibilities = ["FARGATE"]
+  container_definitions    = <<CONTAINER_DEF
+[
+  {
+    "name": "kafka-connect",
+    "image": "842676018479.dkr.ecr.us-east-2.amazonaws.com/kafka:connect-2.5",
+    "cpu": 0,
+    "memory": 0,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 8083,
+        "hostPort": 8083,
+        "protocol": "tcp"
+      }
+    ],
+    "environment": [
+      {
+        "name": "REST_HOST_NAME",
+        "value": "0.0.0.0"
+      },
+      {
+        "name": "OFFSET_STORAGE_TOPIC",
+        "value": "connect_offsets"
+      },
+      {
+        "name": "VALUE_CONVERTER_SCHEMAS_ENABLE",
+        "value": "false"
+      },
+      {
+        "name": "BOOTSTRAP_SERVERS",
+        "value": "kafka.kafka.internal:9092"
+      },
+      {
+        "name": "KEY_CONVERTER",
+        "value": "org.apache.kafka.connect.json.JsonConverter"
+      },
+      {
+        "name": "KEY_CONVERTER_SCHEMAS_ENABLE",
+        "value": "false"
+      },
+      {
+        "name": "CONFIG_STORAGE_REPLICATION_FACTOR",
+        "value": "1"
+      },
+      {
+        "name": "STATUS_STORAGE_REPLICATION_FACTOR",
+        "value": "1"
+      },
+      {
+        "name": "GROUP_ID",
+        "value": "connect-cluster"
+      },
+      {
+        "name": "REST_PORT",
+        "value": "8083"
+      },
+      {
+        "name": "STATUS_STORAGE_TOPIC",
+        "value": "connect_statuses"
+      },
+      {
+        "name": "CONFIG_STORAGE_TOPIC",
+        "value": "connect_configs"
+      },
+      {
+        "name": "OFFSET_STORAGE_REPLICATION_FACTOR",
+        "value": "1"
+      },
+      {
+        "name": "VALUE_CONVERTER",
+        "value": "org.apache.kafka.connect.json.JsonConverter"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/kafka-connect-task",
+        "awslogs-region": "us-east-2",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]
+CONTAINER_DEF
+  lifecycle {
+    ignore_changes = [container_definitions]
+  }
+}
+
+resource "aws_ecs_task_definition" "kafka_task_r2" {
+  family                   = "kafka-task"
+  network_mode             = "awsvpc"
+  cpu                      = "1024"
+  memory                   = "2048"
+  execution_role_arn       = "arn:aws:iam::842676018479:role/SecurityECSTaskExecutionRole"
+  task_role_arn            = "arn:aws:iam::842676018479:role/SecurityECSTaskRole"
+  requires_compatibilities = ["FARGATE"]
+  container_definitions    = <<CONTAINER_DEF
+[
+  {
+    "name": "kafka",
+    "image": "842676018479.dkr.ecr.us-east-2.amazonaws.com/kafka:broker-7.5.0",
+    "cpu": 0,
+    "memory": 0,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 9092,
+        "hostPort": 9092,
+        "protocol": "tcp"
+      },
+      {
+        "containerPort": 29092,
+        "hostPort": 29092,
+        "protocol": "tcp"
+      },
+      {
+        "containerPort": 8080,
+        "hostPort": 8080,
+        "protocol": "tcp"
+      }
+    ],
+    "environment": [
+      {
+        "name": "KAFKA_BROKER_ID",
+        "value": "1"
+      },
+      {
+        "name": "KAFKA_ADVERTISED_LISTENERS",
+        "value": "PLAINTEXT_INTERNAL://kafka.kafka.internal:29092,PLAINTEXT://kafka.kafka.internal:9092"
+      },
+      {
+        "name": "KAFKA_LOG_RETENTION_HOURS",
+        "value": "72"
+      },
+      {
+        "name": "KAFKA_TRANSACTION_STATE_LOG_MIN_ISR",
+        "value": "1"
+      },
+      {
+        "name": "KAFKA_ZOOKEEPER_CONNECT",
+        "value": "zookeeper.kafka.internal:2181"
+      },
+      {
+        "name": "KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR",
+        "value": "1"
+      },
+      {
+        "name": "KAFKA_LISTENERS",
+        "value": "PLAINTEXT_INTERNAL://0.0.0.0:29092,PLAINTEXT://0.0.0.0:9092"
+      },
+      {
+        "name": "KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR",
+        "value": "1"
+      },
+      {
+        "name": "KAFKA_INTER_BROKER_LISTENER_NAME",
+        "value": "PLAINTEXT_INTERNAL"
+      },
+      {
+        "name": "KAFKA_LISTENER_SECURITY_PROTOCOL_MAP",
+        "value": "PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT"
+      },
+      {
+        "name": "KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS",
+        "value": "0"
+      },
+      {
+        "name": "KAFKA_AUTO_CREATE_TOPICS_ENABLE",
+        "value": "true"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/kafka-task",
+        "awslogs-region": "us-east-2",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]
+CONTAINER_DEF
+  lifecycle {
+    ignore_changes = [container_definitions]
+  }
+}
+
+resource "aws_ecs_task_definition" "kafka_task_fixed_r3" {
+  family                   = "kafka-task-fixed"
+  network_mode             = "awsvpc"
+  cpu                      = "1024"
+  memory                   = "2048"
+  execution_role_arn       = "arn:aws:iam::842676018479:role/SecurityECSTaskExecutionRole"
+  task_role_arn            = "arn:aws:iam::842676018479:role/SecurityECSTaskRole"
+  requires_compatibilities = ["FARGATE"]
+  container_definitions    = <<CONTAINER_DEF
+[
+  {
+    "name": "kafka",
+    "image": "842676018479.dkr.ecr.us-east-2.amazonaws.com/kafka:broker-7.5.0",
+    "cpu": 0,
+    "memory": 0,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 9092,
+        "hostPort": 9092,
+        "protocol": "tcp"
+      },
+      {
+        "containerPort": 8080,
+        "hostPort": 8080,
+        "protocol": "tcp"
+      }
+    ],
+    "environment": [
+      {
+        "name": "KAFKA_BROKER_ID",
+        "value": "1"
+      },
+      {
+        "name": "KAFKA_ADVERTISED_LISTENERS",
+        "value": "PLAINTEXT://kafka.kafka.internal:9092"
+      },
+      {
+        "name": "KAFKA_LOG_RETENTION_HOURS",
+        "value": "72"
+      },
+      {
+        "name": "KAFKA_ZOOKEEPER_CONNECT",
+        "value": "zookeeper.kafka.internal:2181"
+      },
+      {
+        "name": "KAFKA_LISTENERS",
+        "value": "PLAINTEXT://0.0.0.0:9092"
+      },
+      {
+        "name": "KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR",
+        "value": "1"
+      },
+      {
+        "name": "KAFKA_AUTO_CREATE_TOPICS_ENABLE",
+        "value": "true"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/kafka-task",
+        "awslogs-region": "us-east-2",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]
+CONTAINER_DEF
+  lifecycle {
+    ignore_changes = [container_definitions]
+  }
+}
+
+resource "aws_ecs_task_definition" "n8n_demo_task_r15" {
+  family                   = "n8n-demo-task"
+  network_mode             = "awsvpc"
+  cpu                      = "4096"
+  memory                   = "8192"
+  execution_role_arn       = "arn:aws:iam::842676018479:role/SecurityECSTaskExecutionRole"
+  task_role_arn            = "arn:aws:iam::842676018479:role/SecurityECSTaskRole"
+  requires_compatibilities = ["FARGATE"]
+  container_definitions    = <<CONTAINER_DEF
+[
+  {
+    "name": "n8n-demo",
+    "image": "842676018479.dkr.ecr.us-east-2.amazonaws.com/n8n-stable:fixed",
+    "cpu": 0,
+    "memory": 0,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 8080,
+        "hostPort": 8080,
+        "protocol": "tcp",
+        "name": "n8n-demo-8080-tcp"
+      }
+    ],
+    "environment": [
+      {
+        "name": "N8N_COMMUNITY_PACKAGES_ENABLED",
+        "value": "true"
+      },
+      {
+        "name": "WEBHOOK_URL",
+        "value": "https://n8n.demodbi360.com/"
+      },
+      {
+        "name": "DB_POSTGRESDB_SSL_ENABLED",
+        "value": "true"
+      },
+      {
+        "name": "DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED",
+        "value": "false"
+      },
+      {
+        "name": "DB_POSTGRESDB_SCHEMA",
+        "value": "n8n_demo"
+      },
+      {
+        "name": "DB_POSTGRESDB_PORT",
+        "value": "5432"
+      },
+      {
+        "name": "N8N_HOST",
+        "value": "n8n.demodbi360.com"
+      },
+      {
+        "name": "N8N_BLOCK_ENV_ACCESS_IN_NODE",
+        "value": "false"
+      },
+      {
+        "name": "N8N_PORT",
+        "value": "8080"
+      },
+      {
+        "name": "N8N_PROTOCOL",
+        "value": "https"
+      },
+      {
+        "name": "DB_POSTGRESDB_HOST",
+        "value": "n8n-postgres-db.cwsjkiciisk1.us-east-2.rds.amazonaws.com"
+      },
+      {
+        "name": "EXECUTIONS_TIMEOUT_MAX",
+        "value": "7200"
+      },
+      {
+        "name": "N8N_COMMUNITY_PACKAGES",
+        "value": "n8n-nodes-pdfco,n8n-nodes-qdrant"
+      },
+      {
+        "name": "NODE_FUNCTION_ALLOW_EXTERNAL",
+        "value": "xlsx"
+      },
+      {
+        "name": "DB_POSTGRESDB_USER",
+        "value": "n8nuser"
+      },
+      {
+        "name": "EXECUTIONS_DATA_MAX_AGE",
+        "value": "336"
+      },
+      {
+        "name": "N8N_RUNNERS_ENABLED",
+        "value": "true"
+      },
+      {
+        "name": "EXECUTIONS_DATA_PRUNE",
+        "value": "true"
+      },
+      {
+        "name": "N8N_ALLOWED_ENV_VARS",
+        "value": "N8N_CUSTOM_API_KEY,HEX_KEY"
+      },
+      {
+        "name": "N8N_BASIC_AUTH_ACTIVE",
+        "value": "true"
+      },
+      {
+        "name": "GENERIC_TIMEZONE",
+        "value": "UTC"
+      },
+      {
+        "name": "N8N_SECURE_COOKIE",
+        "value": "false"
+      },
+      {
+        "name": "DB_POSTGRESDB_DATABASE",
+        "value": "n8ndb"
+      },
+      {
+        "name": "N8N_LOG_LEVEL",
+        "value": "warn"
+      },
+      {
+        "name": "N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS",
+        "value": "true"
+      },
+      {
+        "name": "EXECUTIONS_DATA_SAVE_ON_SUCCESS",
+        "value": "all"
+      },
+      {
+        "name": "N8N_RELEASE_TYPE",
+        "value": "stable"
+      },
+      {
+        "name": "EXECUTIONS_TIMEOUT",
+        "value": "3600"
+      },
+      {
+        "name": "DB_TYPE",
+        "value": "postgresdb"
+      },
+      {
+        "name": "N8N_BASIC_AUTH_USER",
+        "value": "admin"
+      },
+      {
+        "name": "EXECUTIONS_DATA_SAVE_ON_ERROR",
+        "value": "all"
+      },
+      {
+        "name": "NODE_ENV",
+        "value": "production"
+      },
+      {
+        "name": "NODE_FUNCTION_ALLOW_BUILTIN",
+        "value": "*"
+      },
+      {
+        "name": "N8N_GIT_NODE_DISABLE_BARE_REPOS",
+        "value": "true"
+      },
+      {
+        "name": "N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE",
+        "value": "true"
+      }
+    ],
+    "secrets": [
+      {
+        "name": "DB_POSTGRESDB_PASSWORD",
+        "valueFrom": "arn:aws:secretsmanager:us-east-2:842676018479:secret:dev/n8n/config-0cAE3m:DB_POSTGRESDB_PASSWORD::"
+      },
+      {
+        "name": "HEX_KEY",
+        "valueFrom": "arn:aws:secretsmanager:us-east-2:842676018479:secret:dev/n8n/config-0cAE3m:HEX_KEY::"
+      },
+      {
+        "name": "N8N_BASIC_AUTH_PASSWORD",
+        "valueFrom": "arn:aws:secretsmanager:us-east-2:842676018479:secret:dev/n8n/config-0cAE3m:N8N_BASIC_AUTH_PASSWORD::"
+      },
+      {
+        "name": "N8N_CUSTOM_API_KEY",
+        "valueFrom": "arn:aws:secretsmanager:us-east-2:842676018479:secret:dev/n8n/config-0cAE3m:N8N_CUSTOM_API_KEY::"
+      },
+      {
+        "name": "N8N_ENCRYPTION_KEY",
+        "valueFrom": "arn:aws:secretsmanager:us-east-2:842676018479:secret:dev/n8n/config-0cAE3m:N8N_ENCRYPTION_KEY::"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/development-n8n-demo",
+        "awslogs-region": "us-east-2",
+        "awslogs-stream-prefix": "ecs"
+      }
+    },
+    "mountPoints": [
+      {
+        "sourceVolume": "n8n-efs-storage",
+        "containerPath": "/home/node/.n8n",
+        "readOnly": false
+      }
+    ]
+  }
+]
+CONTAINER_DEF
+  volume {
+    name = "n8n-efs-storage"
+  }
+  lifecycle {
+    ignore_changes = [container_definitions]
+  }
+}
+
+resource "aws_ecs_task_definition" "zookeeper_task_r3" {
+  family                   = "zookeeper-task"
+  network_mode             = "awsvpc"
+  cpu                      = "512"
+  memory                   = "1024"
+  execution_role_arn       = "arn:aws:iam::842676018479:role/SecurityECSTaskExecutionRole"
+  task_role_arn            = "arn:aws:iam::842676018479:role/SecurityECSTaskRole"
+  requires_compatibilities = ["FARGATE"]
+  container_definitions    = <<CONTAINER_DEF
+[
+  {
+    "name": "zookeeper",
+    "image": "842676018479.dkr.ecr.us-east-2.amazonaws.com/kafka:zookeeper-7.5.0",
+    "cpu": 0,
+    "memory": 0,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 2181,
+        "hostPort": 2181,
+        "protocol": "tcp"
+      },
+      {
+        "containerPort": 8080,
+        "hostPort": 8080,
+        "protocol": "tcp"
+      }
+    ],
+    "environment": [
+      {
+        "name": "ZOOKEEPER_CLIENT_PORT",
+        "value": "2181"
+      },
+      {
+        "name": "ZOOKEEPER_TICK_TIME",
+        "value": "2000"
+      },
+      {
+        "name": "ZOOKEEPER_DATA_LOG_DIR",
+        "value": "/var/lib/zookeeper/log"
+      },
+      {
+        "name": "ZOOKEEPER_DATA_DIR",
+        "value": "/var/lib/zookeeper/data"
+      },
+      {
+        "name": "ZOOKEEPER_CLIENT_PORT_ADDRESS",
+        "value": "0.0.0.0"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/zookeeper-task",
+        "awslogs-region": "us-east-2",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]
+CONTAINER_DEF
+  lifecycle {
+    ignore_changes = [container_definitions]
+  }
+}

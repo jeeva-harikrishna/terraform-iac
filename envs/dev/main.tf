@@ -27,3 +27,31 @@ module "ec2" {
 module "iam" {
   source = "../../modules/iam"
 }
+
+module "ecr" {
+  source = "../../modules/ecr"
+}
+
+module "ecs_development" {
+  source      = "../../modules/ecs/development"
+  aws_region  = var.aws_region
+  environment = "development"
+}
+
+#module "ecs_staging" {
+# source      = "../../modules/ecs/staging"
+#  aws_region  = var.aws_region
+#  environment = "staging"
+#}
+
+#module "ecs_testing" {
+#  source      = "../../modules/ecs/testing"
+#  aws_region  = var.aws_region
+#  environment = "testing"
+#}
+
+#module "ecs_idle" {
+#  source      = "../../modules/ecs/idle"
+#  aws_region  = var.aws_region
+#  environment = "idle"
+#}
