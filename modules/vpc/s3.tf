@@ -221,3 +221,6 @@ resource "aws_s3_bucket" "ssopublic_objects" {
   provider = aws.us_west_2
   bucket   = "ssopublic-objects"
 }
+
+
+

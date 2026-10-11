@@ -47,3 +47,22 @@ resource "aws_db_instance" "zylerstaging" {
   password            = "placeholder"
   lifecycle { ignore_changes = all }
 }
+resource "aws_db_instance" "zylerprelive_v8_4" {
+    identifier          = "zylerprelive-v8-4"
+      engine              = "mysql"
+        engine_version      = "8.4.11"
+          instance_class      = "db.t3.medium"
+            allocated_storage   = 329
+              storage_type        = "gp3"
+                iops                = 3000
+                  storage_throughput  = 125
+                    port                = 3306
+                      multi_az            = false
+                        publicly_accessible = true
+                          skip_final_snapshot = true
+                            username            = "AsterDBUser"
+                              password            = "placeholder"
+                                storage_encrypted   = true
+                                  lifecycle { ignore_changes = all }
+                                }
+
