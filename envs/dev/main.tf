@@ -38,11 +38,11 @@ module "ecs_development" {
   environment = "development"
 }
 
-#module "ecs_staging" {
-# source      = "../../modules/ecs/staging"
-#  aws_region  = var.aws_region
-#  environment = "staging"
-#}
+module "ecs_staging" {
+ source      = "../../modules/ecs/staging"
+  aws_region  = var.aws_region
+  environment = "staging"
+}
 
 #module "ecs_testing" {
 #  source      = "../../modules/ecs/testing"
