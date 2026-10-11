@@ -19,7 +19,7 @@ resource "aws_ecs_service" "hrms_employee" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_hrms_employee_r111.family}:${aws_ecs_task_definition.development_hrms_employee_r111.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_hrms_employee_r111.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -50,7 +50,7 @@ resource "aws_ecs_service" "lead_qualifier_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_lead_qualifier_frontend_r73.family}:${aws_ecs_task_definition.development_lead_qualifier_frontend_r73.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_lead_qualifier_frontend_r73.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -82,7 +82,7 @@ resource "aws_ecs_service" "master_product_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_master_product_service_r97.family}:${aws_ecs_task_definition.development_master_product_service_r97.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_master_product_service_r97.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -110,7 +110,7 @@ resource "aws_ecs_service" "vmi_service_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_vmi_service_backend_r69.family}:${aws_ecs_task_definition.development_vmi_service_backend_r69.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_vmi_service_backend_r69.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -142,7 +142,7 @@ resource "aws_ecs_service" "sales_clickhouse" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sales_clickhouse_r32.family}:${aws_ecs_task_definition.development_sales_clickhouse_r32.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sales_clickhouse_r32.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -178,7 +178,7 @@ resource "aws_ecs_service" "taskmanagement_website" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_taskmanagement_website_r4.family}:${aws_ecs_task_definition.development_taskmanagement_website_r4.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_taskmanagement_website_r4.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -209,7 +209,7 @@ resource "aws_ecs_service" "my_trade_guru_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_my_trade_guru_backend_r26.family}:${aws_ecs_task_definition.development_my_trade_guru_backend_r26.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_my_trade_guru_backend_r26.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -237,7 +237,7 @@ resource "aws_ecs_service" "gjca_ecommerce_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_gjca_ecommerce_frontend_r30.family}:${aws_ecs_task_definition.development_gjca_ecommerce_frontend_r30.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_gjca_ecommerce_frontend_r30.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -268,7 +268,7 @@ resource "aws_ecs_service" "purchase_service_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_purchase_service_frontend_r132.family}:${aws_ecs_task_definition.development_purchase_service_frontend_r132.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_purchase_service_frontend_r132.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -299,7 +299,7 @@ resource "aws_ecs_service" "purchase_service_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_purchase_service_backend_r188.family}:${aws_ecs_task_definition.development_purchase_service_backend_r188.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_purchase_service_backend_r188.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -327,7 +327,7 @@ resource "aws_ecs_service" "hrms_attendance" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_hrms_attendance_r38.family}:${aws_ecs_task_definition.development_hrms_attendance_r38.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_hrms_attendance_r38.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -358,7 +358,7 @@ resource "aws_ecs_service" "marketing_frontend_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_marketing_frontend_service_r169.family}:${aws_ecs_task_definition.development_marketing_frontend_service_r169.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_marketing_frontend_service_r169.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -386,7 +386,7 @@ resource "aws_ecs_service" "mfg_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_mfg_backend_r26.family}:${aws_ecs_task_definition.development_mfg_backend_r26.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_mfg_backend_r26.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -417,7 +417,7 @@ resource "aws_ecs_service" "master_configuration_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_master_configuration_backend_r63.family}:${aws_ecs_task_definition.development_master_configuration_backend_r63.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_master_configuration_backend_r63.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -449,7 +449,7 @@ resource "aws_ecs_service" "finance_reports_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_finance_reports_service_r158.family}:${aws_ecs_task_definition.development_finance_reports_service_r158.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_finance_reports_service_r158.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -477,7 +477,7 @@ resource "aws_ecs_service" "hrms_report" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_hrms_report_r24.family}:${aws_ecs_task_definition.development_hrms_report_r24.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_hrms_report_r24.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -508,7 +508,7 @@ resource "aws_ecs_service" "ai_chatbot_website" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_ai_chatbot_website_r17.family}:${aws_ecs_task_definition.development_ai_chatbot_website_r17.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_ai_chatbot_website_r17.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -539,7 +539,7 @@ resource "aws_ecs_service" "aster_landing" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_aster_landing_r20.family}:${aws_ecs_task_definition.development_aster_landing_r20.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_aster_landing_r20.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -570,7 +570,7 @@ resource "aws_ecs_service" "entity_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_entity_service_r71.family}:${aws_ecs_task_definition.development_entity_service_r71.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_entity_service_r71.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -598,7 +598,7 @@ resource "aws_ecs_service" "sso_litigation_management_api" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sso_litigation_management_api_r3.family}:${aws_ecs_task_definition.development_sso_litigation_management_api_r3.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sso_litigation_management_api_r3.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -628,7 +628,7 @@ resource "aws_ecs_service" "kafka_connect_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.kafka_connect_task_fixed_r6.family}:${aws_ecs_task_definition.kafka_connect_task_fixed_r6.revision}"
+  task_definition     = data.aws_ecs_task_definition.kafka_connect_task_fixed_r6.arn
   desired_count       = 1
   launch_type         = "FARGATE"
   scheduling_strategy = "REPLICA"
@@ -650,7 +650,7 @@ resource "aws_ecs_service" "exit_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_exit_frontend_r28.family}:${aws_ecs_task_definition.development_exit_frontend_r28.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_exit_frontend_r28.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -681,7 +681,7 @@ resource "aws_ecs_service" "ticketing_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_ticketing_frontend_r12.family}:${aws_ecs_task_definition.development_ticketing_frontend_r12.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_ticketing_frontend_r12.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -713,7 +713,7 @@ resource "aws_ecs_service" "sso_mis" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sso_mis_r111.family}:${aws_ecs_task_definition.development_sso_mis_r111.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sso_mis_r111.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -744,7 +744,7 @@ resource "aws_ecs_service" "all_email_receive_webhook" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_all_email_receive_webhook_r6.family}:${aws_ecs_task_definition.development_all_email_receive_webhook_r6.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_all_email_receive_webhook_r6.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -775,7 +775,7 @@ resource "aws_ecs_service" "communication_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_communication_frontend_r5.family}:${aws_ecs_task_definition.development_communication_frontend_r5.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_communication_frontend_r5.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -807,7 +807,7 @@ resource "aws_ecs_service" "confluxhr_website_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_confluxhr_website_frontend_r19.family}:${aws_ecs_task_definition.development_confluxhr_website_frontend_r19.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_confluxhr_website_frontend_r19.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -835,7 +835,7 @@ resource "aws_ecs_service" "wms_service_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_wms_service_backend_r97.family}:${aws_ecs_task_definition.development_wms_service_backend_r97.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_wms_service_backend_r97.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -863,7 +863,7 @@ resource "aws_ecs_service" "sso_litigation_management" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sso_litigation_management_r3.family}:${aws_ecs_task_definition.development_sso_litigation_management_r3.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sso_litigation_management_r3.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -891,7 +891,7 @@ resource "aws_ecs_service" "gjca_ecommerce_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_gjca_ecommerce_backend_r22.family}:${aws_ecs_task_definition.development_gjca_ecommerce_backend_r22.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_gjca_ecommerce_backend_r22.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -919,7 +919,7 @@ resource "aws_ecs_service" "synapsebiolab" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_synapsebiolab_r19.family}:${aws_ecs_task_definition.development_synapsebiolab_r19.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_synapsebiolab_r19.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -950,7 +950,7 @@ resource "aws_ecs_service" "compliance_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_compliance_service_r7.family}:${aws_ecs_task_definition.development_compliance_service_r7.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_compliance_service_r7.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -981,7 +981,7 @@ resource "aws_ecs_service" "findsuppliers_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_findsuppliers_backend_r296.family}:${aws_ecs_task_definition.development_findsuppliers_backend_r296.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_findsuppliers_backend_r296.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1012,7 +1012,7 @@ resource "aws_ecs_service" "supplier_kpi_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_supplier_kpi_frontend_r15.family}:${aws_ecs_task_definition.development_supplier_kpi_frontend_r15.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_supplier_kpi_frontend_r15.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1043,7 +1043,7 @@ resource "aws_ecs_service" "findsuppliers_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_findsuppliers_frontend_r271.family}:${aws_ecs_task_definition.development_findsuppliers_frontend_r271.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_findsuppliers_frontend_r271.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1071,7 +1071,7 @@ resource "aws_ecs_service" "hrms_payroll" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_hrms_payroll_r47.family}:${aws_ecs_task_definition.development_hrms_payroll_r47.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_hrms_payroll_r47.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1098,7 +1098,7 @@ resource "aws_ecs_service" "n8n_demo_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.n8n_demo_task_r15.family}:${aws_ecs_task_definition.n8n_demo_task_r15.revision}"
+  task_definition     = data.aws_ecs_task_definition.n8n_demo_task_r15.arn
   desired_count       = 0
   launch_type         = "FARGATE"
   scheduling_strategy = "REPLICA"
@@ -1126,7 +1126,7 @@ resource "aws_ecs_service" "sales_service_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sales_service_frontend_r298.family}:${aws_ecs_task_definition.development_sales_service_frontend_r298.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sales_service_frontend_r298.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1157,7 +1157,7 @@ resource "aws_ecs_service" "my_trade_guru_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_my_trade_guru_frontend_r25.family}:${aws_ecs_task_definition.development_my_trade_guru_frontend_r25.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_my_trade_guru_frontend_r25.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1188,7 +1188,7 @@ resource "aws_ecs_service" "sla_rule_engine_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sla_rule_engine_backend_r3.family}:${aws_ecs_task_definition.development_sla_rule_engine_backend_r3.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sla_rule_engine_backend_r3.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1216,7 +1216,7 @@ resource "aws_ecs_service" "authserver_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_authserver_frontend_r107.family}:${aws_ecs_task_definition.development_authserver_frontend_r107.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_authserver_frontend_r107.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1244,7 +1244,7 @@ resource "aws_ecs_service" "audit_management_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_audit_management_frontend_r9.family}:${aws_ecs_task_definition.development_audit_management_frontend_r9.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_audit_management_frontend_r9.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1272,7 +1272,7 @@ resource "aws_ecs_service" "audit_management_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_audit_management_backend_r14.family}:${aws_ecs_task_definition.development_audit_management_backend_r14.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_audit_management_backend_r14.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1303,7 +1303,7 @@ resource "aws_ecs_service" "customer_map_service_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_customer_map_service_backend_r16.family}:${aws_ecs_task_definition.development_customer_map_service_backend_r16.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_customer_map_service_backend_r16.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1334,7 +1334,7 @@ resource "aws_ecs_service" "jeevahealthcare_website" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_jeevahealthcare_website_r4.family}:${aws_ecs_task_definition.development_jeevahealthcare_website_r4.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_jeevahealthcare_website_r4.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1365,7 +1365,7 @@ resource "aws_ecs_service" "marketing_backend_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_marketing_backend_service_r156.family}:${aws_ecs_task_definition.development_marketing_backend_service_r156.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_marketing_backend_service_r156.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1393,7 +1393,7 @@ resource "aws_ecs_service" "vmi_service_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_vmi_service_frontend_r23.family}:${aws_ecs_task_definition.development_vmi_service_frontend_r23.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_vmi_service_frontend_r23.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1421,7 +1421,7 @@ resource "aws_ecs_service" "findsuppliers_website" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_findsuppliers_website_r4.family}:${aws_ecs_task_definition.development_findsuppliers_website_r4.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_findsuppliers_website_r4.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1452,7 +1452,7 @@ resource "aws_ecs_service" "audit_trail_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_audit_trail_frontend_r3.family}:${aws_ecs_task_definition.development_audit_trail_frontend_r3.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_audit_trail_frontend_r3.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1483,7 +1483,7 @@ resource "aws_ecs_service" "sourcing_backend_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sourcing_backend_service_r11.family}:${aws_ecs_task_definition.development_sourcing_backend_service_r11.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sourcing_backend_service_r11.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1511,7 +1511,7 @@ resource "aws_ecs_service" "notification_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_notification_backend_r24.family}:${aws_ecs_task_definition.development_notification_backend_r24.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_notification_backend_r24.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1542,7 +1542,7 @@ resource "aws_ecs_service" "reports_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_reports_service_r7.family}:${aws_ecs_task_definition.development_reports_service_r7.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_reports_service_r7.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1570,7 +1570,7 @@ resource "aws_ecs_service" "mfg_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_mfg_frontend_r12.family}:${aws_ecs_task_definition.development_mfg_frontend_r12.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_mfg_frontend_r12.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1598,7 +1598,7 @@ resource "aws_ecs_service" "sales_dashboard_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sales_dashboard_frontend_r3.family}:${aws_ecs_task_definition.development_sales_dashboard_frontend_r3.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sales_dashboard_frontend_r3.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1629,7 +1629,7 @@ resource "aws_ecs_service" "supplier_kpi_backend_v2" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_supplier_kpi_backend_v2_r5.family}:${aws_ecs_task_definition.development_supplier_kpi_backend_v2_r5.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_supplier_kpi_backend_v2_r5.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1657,7 +1657,7 @@ resource "aws_ecs_service" "hrms_recruitment_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_hrms_recruitment_frontend_r43.family}:${aws_ecs_task_definition.development_hrms_recruitment_frontend_r43.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_hrms_recruitment_frontend_r43.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1685,7 +1685,7 @@ resource "aws_ecs_service" "wms_service_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_wms_service_frontend_r67.family}:${aws_ecs_task_definition.development_wms_service_frontend_r67.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_wms_service_frontend_r67.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1717,7 +1717,7 @@ resource "aws_ecs_service" "dbi_chat_area" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_dbi_chat_area_r219.family}:${aws_ecs_task_definition.development_dbi_chat_area_r219.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_dbi_chat_area_r219.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1748,7 +1748,7 @@ resource "aws_ecs_service" "sso_project_management" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sso_project_management_r6.family}:${aws_ecs_task_definition.development_sso_project_management_r6.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sso_project_management_r6.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1779,7 +1779,7 @@ resource "aws_ecs_service" "authorization_v2" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_authorization_v2_r38.family}:${aws_ecs_task_definition.development_authorization_v2_r38.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_authorization_v2_r38.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1811,7 +1811,7 @@ resource "aws_ecs_service" "finance_backend_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_finance_backend_service_r160.family}:${aws_ecs_task_definition.development_finance_backend_service_r160.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_finance_backend_service_r160.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1843,7 +1843,7 @@ resource "aws_ecs_service" "dbi_chat_widget" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_dbi_chat_widget_r119.family}:${aws_ecs_task_definition.development_dbi_chat_widget_r119.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_dbi_chat_widget_r119.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1874,7 +1874,7 @@ resource "aws_ecs_service" "farm_management" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_farm_management_r2.family}:${aws_ecs_task_definition.development_farm_management_r2.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_farm_management_r2.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1905,7 +1905,7 @@ resource "aws_ecs_service" "nexus_react_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_nexus_react_frontend_r40.family}:${aws_ecs_task_definition.development_nexus_react_frontend_r40.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_nexus_react_frontend_r40.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1936,7 +1936,7 @@ resource "aws_ecs_service" "task_service_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_task_service_frontend_r82.family}:${aws_ecs_task_definition.development_task_service_frontend_r82.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_task_service_frontend_r82.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1967,7 +1967,7 @@ resource "aws_ecs_service" "pricing_engine" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_pricing_engine_r5.family}:${aws_ecs_task_definition.development_pricing_engine_r5.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_pricing_engine_r5.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -1998,7 +1998,7 @@ resource "aws_ecs_service" "communication_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_communication_backend_r3.family}:${aws_ecs_task_definition.development_communication_backend_r3.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_communication_backend_r3.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2029,7 +2029,7 @@ resource "aws_ecs_service" "sgl_ecommerce_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sgl_ecommerce_backend_r3.family}:${aws_ecs_task_definition.development_sgl_ecommerce_backend_r3.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sgl_ecommerce_backend_r3.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2060,7 +2060,7 @@ resource "aws_ecs_service" "b2badmin_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_b2badmin_frontend_r64.family}:${aws_ecs_task_definition.development_b2badmin_frontend_r64.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_b2badmin_frontend_r64.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2092,7 +2092,7 @@ resource "aws_ecs_service" "regos" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_regos_r44.family}:${aws_ecs_task_definition.development_regos_r44.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_regos_r44.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2120,7 +2120,7 @@ resource "aws_ecs_service" "authserver_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_authserver_backend_r252.family}:${aws_ecs_task_definition.development_authserver_backend_r252.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_authserver_backend_r252.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2150,7 +2150,7 @@ resource "aws_ecs_service" "zookeeper_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.zookeeper_task_r3.family}:${aws_ecs_task_definition.zookeeper_task_r3.revision}"
+  task_definition     = data.aws_ecs_task_definition.zookeeper_task_r3.arn
   desired_count       = 1
   launch_type         = "FARGATE"
   scheduling_strategy = "REPLICA"
@@ -2172,7 +2172,7 @@ resource "aws_ecs_service" "nexus_landing_next" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_nexus_landing_next_r57.family}:${aws_ecs_task_definition.development_nexus_landing_next_r57.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_nexus_landing_next_r57.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2200,7 +2200,7 @@ resource "aws_ecs_service" "inventory_service_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_inventory_service_backend_r64.family}:${aws_ecs_task_definition.development_inventory_service_backend_r64.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_inventory_service_backend_r64.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2231,7 +2231,7 @@ resource "aws_ecs_service" "nexus_fast_api" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_nexus_fast_api_r61.family}:${aws_ecs_task_definition.development_nexus_fast_api_r61.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_nexus_fast_api_r61.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2261,7 +2261,7 @@ resource "aws_ecs_service" "clicklens_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.clicklens_task_final_r4.family}:${aws_ecs_task_definition.clicklens_task_final_r4.revision}"
+  task_definition     = data.aws_ecs_task_definition.clicklens_task_final_r4.arn
   desired_count       = 1
   launch_type         = "FARGATE"
   scheduling_strategy = "REPLICA"
@@ -2289,7 +2289,7 @@ resource "aws_ecs_service" "sales_service_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sales_service_backend_r481.family}:${aws_ecs_task_definition.development_sales_service_backend_r481.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sales_service_backend_r481.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2317,7 +2317,7 @@ resource "aws_ecs_service" "hrms_inventory" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_hrms_inventory_r8.family}:${aws_ecs_task_definition.development_hrms_inventory_r8.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_hrms_inventory_r8.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2347,7 +2347,7 @@ resource "aws_ecs_service" "kafka_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.kafka_task_fixed_r3.family}:${aws_ecs_task_definition.kafka_task_fixed_r3.revision}"
+  task_definition     = data.aws_ecs_task_definition.kafka_task_fixed_r3.arn
   desired_count       = 1
   launch_type         = "FARGATE"
   scheduling_strategy = "REPLICA"
@@ -2370,7 +2370,7 @@ resource "aws_ecs_service" "finance_frontend_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_finance_frontend_service_r112.family}:${aws_ecs_task_definition.development_finance_frontend_service_r112.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_finance_frontend_service_r112.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2401,7 +2401,7 @@ resource "aws_ecs_service" "biotrace_next" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_biotrace_next_r41.family}:${aws_ecs_task_definition.development_biotrace_next_r41.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_biotrace_next_r41.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2429,7 +2429,7 @@ resource "aws_ecs_service" "task_management" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_task_management_r71.family}:${aws_ecs_task_definition.development_task_management_r71.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_task_management_r71.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2461,7 +2461,7 @@ resource "aws_ecs_service" "dbi_websocket" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_dbi_websocket_r249.family}:${aws_ecs_task_definition.development_dbi_websocket_r249.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_dbi_websocket_r249.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2492,7 +2492,7 @@ resource "aws_ecs_service" "sla_rule_engine_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sla_rule_engine_frontend_r8.family}:${aws_ecs_task_definition.development_sla_rule_engine_frontend_r8.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sla_rule_engine_frontend_r8.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2520,7 +2520,7 @@ resource "aws_ecs_service" "notification_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_notification_frontend_r7.family}:${aws_ecs_task_definition.development_notification_frontend_r7.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_notification_frontend_r7.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2552,7 +2552,7 @@ resource "aws_ecs_service" "lead_qualifier_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_lead_qualifier_backend_r67.family}:${aws_ecs_task_definition.development_lead_qualifier_backend_r67.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_lead_qualifier_backend_r67.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2583,7 +2583,7 @@ resource "aws_ecs_service" "buyersflow_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_buyersflow_backend_r38.family}:${aws_ecs_task_definition.development_buyersflow_backend_r38.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_buyersflow_backend_r38.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2611,7 +2611,7 @@ resource "aws_ecs_service" "inventory_service_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_inventory_service_frontend_r41.family}:${aws_ecs_task_definition.development_inventory_service_frontend_r41.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_inventory_service_frontend_r41.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2643,7 +2643,7 @@ resource "aws_ecs_service" "company_research_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_company_research_backend_r26.family}:${aws_ecs_task_definition.development_company_research_backend_r26.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_company_research_backend_r26.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2675,7 +2675,7 @@ resource "aws_ecs_service" "buyersflow_website" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_buyersflow_website_r3.family}:${aws_ecs_task_definition.development_buyersflow_website_r3.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_buyersflow_website_r3.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2706,7 +2706,7 @@ resource "aws_ecs_service" "buyersflow_new" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_buyersflow_new_r19.family}:${aws_ecs_task_definition.development_buyersflow_new_r19.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_buyersflow_new_r19.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2737,7 +2737,7 @@ resource "aws_ecs_service" "b2badmin_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_b2badmin_backend_r105.family}:${aws_ecs_task_definition.development_b2badmin_backend_r105.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_b2badmin_backend_r105.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2768,7 +2768,7 @@ resource "aws_ecs_service" "sourcing_frontend_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sourcing_frontend_service_r12.family}:${aws_ecs_task_definition.development_sourcing_frontend_service_r12.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sourcing_frontend_service_r12.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2796,7 +2796,7 @@ resource "aws_ecs_service" "aster_node" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_aster_node_r392.family}:${aws_ecs_task_definition.development_aster_node_r392.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_aster_node_r392.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2827,7 +2827,7 @@ resource "aws_ecs_service" "gj_ecommerce_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_gj_ecommerce_backend_r100.family}:${aws_ecs_task_definition.development_gj_ecommerce_backend_r100.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_gj_ecommerce_backend_r100.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2858,7 +2858,7 @@ resource "aws_ecs_service" "ticketing_system_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_ticketing_system_backend_r62.family}:${aws_ecs_task_definition.development_ticketing_system_backend_r62.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_ticketing_system_backend_r62.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2891,7 +2891,7 @@ resource "aws_ecs_service" "hrms_backend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_hrms_backend_r317.family}:${aws_ecs_task_definition.development_hrms_backend_r317.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_hrms_backend_r317.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2922,7 +2922,7 @@ resource "aws_ecs_service" "ecommerce_frontend_next" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_ecommerce_frontend_next_r71.family}:${aws_ecs_task_definition.development_ecommerce_frontend_next_r71.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_ecommerce_frontend_next_r71.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -2952,7 +2952,7 @@ resource "aws_ecs_service" "clickhouse_service" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.clickhouse_task_full_r2.family}:${aws_ecs_task_definition.clickhouse_task_full_r2.revision}"
+  task_definition     = data.aws_ecs_task_definition.clickhouse_task_full_r2.arn
   desired_count       = 1
   launch_type         = "FARGATE"
   scheduling_strategy = "REPLICA"
@@ -2976,7 +2976,7 @@ resource "aws_ecs_service" "hrms_careeer_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_hrms_careeer_frontend_r16.family}:${aws_ecs_task_definition.development_hrms_careeer_frontend_r16.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_hrms_careeer_frontend_r16.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -3007,7 +3007,7 @@ resource "aws_ecs_service" "revenue_incentive" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_revenue_incentive_r9.family}:${aws_ecs_task_definition.development_revenue_incentive_r9.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_revenue_incentive_r9.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -3038,7 +3038,7 @@ resource "aws_ecs_service" "ticketing_system_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_ticketing_system_frontend_r13.family}:${aws_ecs_task_definition.development_ticketing_system_frontend_r13.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_ticketing_system_frontend_r13.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -3069,7 +3069,7 @@ resource "aws_ecs_service" "calculator_v2" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_calculator_v2_r2.family}:${aws_ecs_task_definition.development_calculator_v2_r2.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_calculator_v2_r2.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -3100,7 +3100,7 @@ resource "aws_ecs_service" "drmallad" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_drmallad_r28.family}:${aws_ecs_task_definition.development_drmallad_r28.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_drmallad_r28.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -3132,7 +3132,7 @@ resource "aws_ecs_service" "purchase_intelligence" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_purchase_intelligence_r32.family}:${aws_ecs_task_definition.development_purchase_intelligence_r32.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_purchase_intelligence_r32.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -3163,7 +3163,7 @@ resource "aws_ecs_service" "customer_map_service_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_customer_map_service_frontend_r6.family}:${aws_ecs_task_definition.development_customer_map_service_frontend_r6.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_customer_map_service_frontend_r6.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -3194,7 +3194,7 @@ resource "aws_ecs_service" "sgl_ecommerce_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_sgl_ecommerce_frontend_r9.family}:${aws_ecs_task_definition.development_sgl_ecommerce_frontend_r9.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_sgl_ecommerce_frontend_r9.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
@@ -3225,7 +3225,7 @@ resource "aws_ecs_service" "asterdocs_frontend" {
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
   cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = "${aws_ecs_task_definition.development_asterdocs_frontend_r452.family}:${aws_ecs_task_definition.development_asterdocs_frontend_r452.revision}"
+  task_definition     = data.aws_ecs_task_definition.development_asterdocs_frontend_r452.arn
   desired_count       = 1
   scheduling_strategy = "REPLICA"
   platform_version    = "LATEST"
