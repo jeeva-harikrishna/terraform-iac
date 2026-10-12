@@ -11,8 +11,8 @@ resource "aws_eip" "eip_39f12f5d" {
   domain = "vpc"
   tags = {
     Environment = "dev"
-    ManagedBy = "terraform"
-    Project = "dbi360"
+    ManagedBy   = "terraform"
+    Project     = "dbi360"
   }
 }
 
@@ -21,8 +21,8 @@ resource "aws_eip" "eip_1cd1688a" {
   domain = "vpc"
   tags = {
     Environment = "dev"
-    ManagedBy = "terraform"
-    Project = "dbi360"
+    ManagedBy   = "terraform"
+    Project     = "dbi360"
   }
 }
 
@@ -32,8 +32,8 @@ resource "aws_eip" "eip_5bb4fd6d" {
   domain = "vpc"
   tags = {
     Environment = "dev"
-    ManagedBy = "terraform"
-    Project = "dbi360"
+    ManagedBy   = "terraform"
+    Project     = "dbi360"
   }
 }
 
@@ -41,10 +41,10 @@ resource "aws_eip" "eip_5bb4fd6d" {
 resource "aws_eip" "dbi360_dev_stage_nat_eip" {
   domain = "vpc"
   tags = {
-    Name = "dbi360-dev-stage-nat-eip"
+    Name        = "dbi360-dev-stage-nat-eip"
     Environment = "dev"
-    ManagedBy = "terraform"
-    Project = "dbi360"
+    ManagedBy   = "terraform"
+    Project     = "dbi360"
   }
 }
 
@@ -53,8 +53,8 @@ resource "aws_eip" "eip_1ed86640" {
   domain = "vpc"
   tags = {
     Environment = "dev"
-    ManagedBy = "terraform"
-    Project = "dbi360"
+    ManagedBy   = "terraform"
+    Project     = "dbi360"
   }
 }
 
@@ -64,10 +64,10 @@ resource "aws_eip" "eip_1ed86640" {
 resource "aws_eip" "security_nat_eip" {
   domain = "vpc"
   tags = {
-    Name = "security-nat-eip"
+    Name        = "security-nat-eip"
     Environment = "dev"
-    ManagedBy = "terraform"
-    Project = "dbi360"
+    ManagedBy   = "terraform"
+    Project     = "dbi360"
   }
 }
 
@@ -76,8 +76,8 @@ resource "aws_eip" "eip_ddf92523" {
   domain = "vpc"
   tags = {
     Environment = "dev"
-    ManagedBy = "terraform"
-    Project = "dbi360"
+    ManagedBy   = "terraform"
+    Project     = "dbi360"
   }
 }
 
@@ -85,10 +85,10 @@ resource "aws_eip" "eip_ddf92523" {
 resource "aws_eip" "github_actions_runner" {
   domain = "vpc"
   tags = {
-    Name = "github-actions-runner"
+    Name        = "github-actions-runner"
     Environment = "dev"
-    ManagedBy = "terraform"
-    Project = "dbi360"
+    ManagedBy   = "terraform"
+    Project     = "dbi360"
   }
 }
 
@@ -99,8 +99,8 @@ resource "aws_eip" "eip_044115db" {
   domain = "vpc"
   tags = {
     Environment = "dev"
-    ManagedBy = "terraform"
-    Project = "dbi360"
+    ManagedBy   = "terraform"
+    Project     = "dbi360"
   }
 }
 

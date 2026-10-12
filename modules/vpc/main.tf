@@ -7,7 +7,7 @@ resource "aws_vpc" "security_vpc" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_support   = true
   enable_dns_hostnames = true
-  tags = { Name = "security-vpc" }
+  tags                 = { Name = "security-vpc" }
 }
 
 resource "aws_internet_gateway" "security_igw" {
@@ -99,9 +99,9 @@ resource "aws_route_table_association" "security_private_2c" {
 resource "aws_vpc" "dbi360_dev_stage_vpc" {
   cidr_block                       = "10.0.0.0/16"
   assign_generated_ipv6_cidr_block = true
-  enable_dns_support   = true
-  enable_dns_hostnames = true
-  tags = { Name = "dbi360-dev-stage-vpc" }
+  enable_dns_support               = true
+  enable_dns_hostnames             = true
+  tags                             = { Name = "dbi360-dev-stage-vpc" }
 }
 
 resource "aws_internet_gateway" "dbi360_dev_stage_igw" {
@@ -157,7 +157,7 @@ resource "aws_vpc" "meraki_vpn_vpc" {
   cidr_block           = "172.30.0.0/16"
   enable_dns_support   = true
   enable_dns_hostnames = true
-  tags = { Name = "Meraki-VPN-VPC" }
+  tags                 = { Name = "Meraki-VPN-VPC" }
 }
 
 resource "aws_internet_gateway" "meraki_vpn_igw" {

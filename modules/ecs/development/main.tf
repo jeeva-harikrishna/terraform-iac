@@ -14,16 +14,16 @@ resource "aws_ecs_cluster_capacity_providers" "development_cluster" {
 }
 
 resource "aws_ecs_service" "hrms_employee" {
-  name                = "hrms-employee"
+  name                          = "hrms-employee"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_hrms_employee_r111.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_hrms_employee_r111.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -42,19 +42,19 @@ resource "aws_ecs_service" "hrms_employee" {
 }
 
 resource "aws_ecs_service" "lead_qualifier_frontend" {
-  name                = "lead-qualifier-frontend"
+  name = "lead-qualifier-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_lead_qualifier_frontend_r73.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_lead_qualifier_frontend_r73.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 3
@@ -73,7 +73,7 @@ resource "aws_ecs_service" "lead_qualifier_frontend" {
 }
 
 resource "aws_ecs_service" "master_product_service" {
-  name                = "master-product-service"
+  name = "master-product-service"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -81,12 +81,12 @@ resource "aws_ecs_service" "master_product_service" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_master_product_service_r97.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_master_product_service_r97.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -105,16 +105,16 @@ resource "aws_ecs_service" "master_product_service" {
 }
 
 resource "aws_ecs_service" "vmi_service_backend" {
-  name                = "vmi-service-backend"
+  name                          = "vmi-service-backend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_vmi_service_backend_r69.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_vmi_service_backend_r69.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -133,20 +133,20 @@ resource "aws_ecs_service" "vmi_service_backend" {
 }
 
 resource "aws_ecs_service" "sales_clickhouse" {
-  name                = "sales-clickhouse"
+  name = "sales-clickhouse"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   health_check_grace_period_seconds = 120
-  availability_zone_rebalancing = "ENABLED"
-  enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sales_clickhouse_r32.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  availability_zone_rebalancing     = "ENABLED"
+  enable_ecs_managed_tags           = true
+  cluster                           = aws_ecs_cluster.development_cluster.id
+  task_definition                   = data.aws_ecs_task_definition.development_sales_clickhouse_r32.arn
+  desired_count                     = 1
+  scheduling_strategy               = "REPLICA"
+  platform_version                  = "LATEST"
+  iam_role                          = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 3
@@ -170,19 +170,19 @@ resource "aws_ecs_service" "sales_clickhouse" {
 }
 
 resource "aws_ecs_service" "taskmanagement_website" {
-  name                = "taskmanagement-website"
+  name = "taskmanagement-website"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_taskmanagement_website_r4.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_taskmanagement_website_r4.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -201,19 +201,19 @@ resource "aws_ecs_service" "taskmanagement_website" {
 }
 
 resource "aws_ecs_service" "my_trade_guru_backend" {
-  name                = "my-trade-guru-backend"
+  name = "my-trade-guru-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_my_trade_guru_backend_r26.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_my_trade_guru_backend_r26.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -232,16 +232,16 @@ resource "aws_ecs_service" "my_trade_guru_backend" {
 }
 
 resource "aws_ecs_service" "gjca_ecommerce_frontend" {
-  name                = "gjca-ecommerce-frontend"
+  name                          = "gjca-ecommerce-frontend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_gjca_ecommerce_frontend_r30.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_gjca_ecommerce_frontend_r30.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -260,19 +260,19 @@ resource "aws_ecs_service" "gjca_ecommerce_frontend" {
 }
 
 resource "aws_ecs_service" "purchase_service_frontend" {
-  name                = "purchase-service-frontend"
+  name = "purchase-service-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_purchase_service_frontend_r132.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_purchase_service_frontend_r132.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -291,19 +291,19 @@ resource "aws_ecs_service" "purchase_service_frontend" {
 }
 
 resource "aws_ecs_service" "purchase_service_backend" {
-  name                = "purchase-service-backend"
+  name = "purchase-service-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_purchase_service_backend_r188.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_purchase_service_backend_r188.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -322,16 +322,16 @@ resource "aws_ecs_service" "purchase_service_backend" {
 }
 
 resource "aws_ecs_service" "hrms_attendance" {
-  name                = "hrms-attendance"
+  name                          = "hrms-attendance"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_hrms_attendance_r38.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_hrms_attendance_r38.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -350,19 +350,19 @@ resource "aws_ecs_service" "hrms_attendance" {
 }
 
 resource "aws_ecs_service" "marketing_frontend_service" {
-  name                = "marketing-frontend-service"
+  name = "marketing-frontend-service"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_marketing_frontend_service_r169.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_marketing_frontend_service_r169.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -381,16 +381,16 @@ resource "aws_ecs_service" "marketing_frontend_service" {
 }
 
 resource "aws_ecs_service" "mfg_backend" {
-  name                = "mfg-backend"
+  name                          = "mfg-backend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_mfg_backend_r26.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_mfg_backend_r26.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -409,19 +409,19 @@ resource "aws_ecs_service" "mfg_backend" {
 }
 
 resource "aws_ecs_service" "master_configuration_backend" {
-  name                = "master-configuration-backend"
+  name = "master-configuration-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_master_configuration_backend_r63.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_master_configuration_backend_r63.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -440,7 +440,7 @@ resource "aws_ecs_service" "master_configuration_backend" {
 }
 
 resource "aws_ecs_service" "finance_reports_service" {
-  name                = "finance-reports-service"
+  name = "finance-reports-service"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -448,12 +448,12 @@ resource "aws_ecs_service" "finance_reports_service" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_finance_reports_service_r158.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_finance_reports_service_r158.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 3
@@ -472,16 +472,16 @@ resource "aws_ecs_service" "finance_reports_service" {
 }
 
 resource "aws_ecs_service" "hrms_report" {
-  name                = "hrms-report"
+  name                          = "hrms-report"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_hrms_report_r24.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_hrms_report_r24.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -500,19 +500,19 @@ resource "aws_ecs_service" "hrms_report" {
 }
 
 resource "aws_ecs_service" "ai_chatbot_website" {
-  name                = "ai-chatbot-website"
+  name = "ai-chatbot-website"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_ai_chatbot_website_r17.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_ai_chatbot_website_r17.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -531,19 +531,19 @@ resource "aws_ecs_service" "ai_chatbot_website" {
 }
 
 resource "aws_ecs_service" "aster_landing" {
-  name                = "aster-landing"
+  name = "aster-landing"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_aster_landing_r20.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_aster_landing_r20.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -562,19 +562,19 @@ resource "aws_ecs_service" "aster_landing" {
 }
 
 resource "aws_ecs_service" "entity_service" {
-  name                = "entity-service"
+  name = "entity-service"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_entity_service_r71.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_entity_service_r71.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -593,16 +593,16 @@ resource "aws_ecs_service" "entity_service" {
 }
 
 resource "aws_ecs_service" "sso_litigation_management_api" {
-  name                = "sso-litigation-management-api"
+  name                          = "sso-litigation-management-api"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sso_litigation_management_api_r3.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sso_litigation_management_api_r3.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -621,19 +621,19 @@ resource "aws_ecs_service" "sso_litigation_management_api" {
 }
 
 resource "aws_ecs_service" "kafka_connect_service" {
-  name                = "kafka-connect-service"
+  name = "kafka-connect-service"
   service_registries {
     registry_arn = "arn:aws:servicediscovery:us-east-2:842676018479:service/srv-fuaafr63q2nmgzbm"
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.kafka_connect_task_fixed_r6.arn
-  desired_count       = 1
-  launch_type         = "FARGATE"
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.kafka_connect_task_fixed_r6.arn
+  desired_count                 = 1
+  launch_type                   = "FARGATE"
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   network_configuration {
     subnets          = ["subnet-073cba83e3cde7daf", "subnet-0eeefbeb3f67a5dfc"]
     security_groups  = ["sg-088b1a7bdd325cef8"]
@@ -642,19 +642,19 @@ resource "aws_ecs_service" "kafka_connect_service" {
 }
 
 resource "aws_ecs_service" "exit_frontend" {
-  name                = "exit-frontend"
+  name = "exit-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_exit_frontend_r28.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_exit_frontend_r28.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -673,19 +673,19 @@ resource "aws_ecs_service" "exit_frontend" {
 }
 
 resource "aws_ecs_service" "ticketing_frontend" {
-  name                = "ticketing-frontend"
+  name = "ticketing-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_ticketing_frontend_r12.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_ticketing_frontend_r12.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -704,7 +704,7 @@ resource "aws_ecs_service" "ticketing_frontend" {
 }
 
 resource "aws_ecs_service" "sso_mis" {
-  name                = "sso-mis"
+  name = "sso-mis"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -712,12 +712,12 @@ resource "aws_ecs_service" "sso_mis" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sso_mis_r111.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sso_mis_r111.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -736,19 +736,19 @@ resource "aws_ecs_service" "sso_mis" {
 }
 
 resource "aws_ecs_service" "all_email_receive_webhook" {
-  name                = "all-email-receive-webhook"
+  name = "all-email-receive-webhook"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_all_email_receive_webhook_r6.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_all_email_receive_webhook_r6.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -767,19 +767,19 @@ resource "aws_ecs_service" "all_email_receive_webhook" {
 }
 
 resource "aws_ecs_service" "communication_frontend" {
-  name                = "communication-frontend"
+  name = "communication-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_communication_frontend_r5.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_communication_frontend_r5.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -798,7 +798,7 @@ resource "aws_ecs_service" "communication_frontend" {
 }
 
 resource "aws_ecs_service" "confluxhr_website_frontend" {
-  name                = "confluxhr-website-frontend"
+  name = "confluxhr-website-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -806,12 +806,12 @@ resource "aws_ecs_service" "confluxhr_website_frontend" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_confluxhr_website_frontend_r19.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_confluxhr_website_frontend_r19.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -830,16 +830,16 @@ resource "aws_ecs_service" "confluxhr_website_frontend" {
 }
 
 resource "aws_ecs_service" "wms_service_backend" {
-  name                = "wms-service-backend"
+  name                          = "wms-service-backend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_wms_service_backend_r97.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_wms_service_backend_r97.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -858,16 +858,16 @@ resource "aws_ecs_service" "wms_service_backend" {
 }
 
 resource "aws_ecs_service" "sso_litigation_management" {
-  name                = "sso-litigation-management"
+  name                          = "sso-litigation-management"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sso_litigation_management_r3.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sso_litigation_management_r3.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -886,16 +886,16 @@ resource "aws_ecs_service" "sso_litigation_management" {
 }
 
 resource "aws_ecs_service" "gjca_ecommerce_backend" {
-  name                = "gjca-ecommerce-backend"
+  name                          = "gjca-ecommerce-backend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_gjca_ecommerce_backend_r22.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_gjca_ecommerce_backend_r22.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -914,16 +914,16 @@ resource "aws_ecs_service" "gjca_ecommerce_backend" {
 }
 
 resource "aws_ecs_service" "synapsebiolab" {
-  name                = "synapsebiolab"
+  name                          = "synapsebiolab"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_synapsebiolab_r19.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_synapsebiolab_r19.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -942,19 +942,19 @@ resource "aws_ecs_service" "synapsebiolab" {
 }
 
 resource "aws_ecs_service" "compliance_service" {
-  name                = "compliance-service"
+  name = "compliance-service"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_compliance_service_r7.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_compliance_service_r7.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -973,19 +973,19 @@ resource "aws_ecs_service" "compliance_service" {
 }
 
 resource "aws_ecs_service" "findsuppliers_backend" {
-  name                = "findsuppliers-backend"
+  name = "findsuppliers-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_findsuppliers_backend_r296.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_findsuppliers_backend_r296.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1004,19 +1004,19 @@ resource "aws_ecs_service" "findsuppliers_backend" {
 }
 
 resource "aws_ecs_service" "supplier_kpi_frontend" {
-  name                = "supplier-kpi-frontend"
+  name = "supplier-kpi-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_supplier_kpi_frontend_r15.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_supplier_kpi_frontend_r15.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1035,19 +1035,19 @@ resource "aws_ecs_service" "supplier_kpi_frontend" {
 }
 
 resource "aws_ecs_service" "findsuppliers_frontend" {
-  name                = "findsuppliers-frontend"
+  name = "findsuppliers-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_findsuppliers_frontend_r271.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_findsuppliers_frontend_r271.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1066,16 +1066,16 @@ resource "aws_ecs_service" "findsuppliers_frontend" {
 }
 
 resource "aws_ecs_service" "hrms_payroll" {
-  name                = "hrms-payroll"
+  name                          = "hrms-payroll"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_hrms_payroll_r47.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_hrms_payroll_r47.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1094,16 +1094,16 @@ resource "aws_ecs_service" "hrms_payroll" {
 }
 
 resource "aws_ecs_service" "n8n_demo_service" {
-  name                = "n8n-demo-service"
+  name                          = "n8n-demo-service"
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.n8n_demo_task_r15.arn
-  desired_count       = 0
-  launch_type         = "FARGATE"
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.n8n_demo_task_r15.arn
+  desired_count                 = 0
+  launch_type                   = "FARGATE"
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   network_configuration {
     subnets          = ["subnet-073cba83e3cde7daf", "subnet-0eeefbeb3f67a5dfc"]
     security_groups  = ["sg-088b1a7bdd325cef8"]
@@ -1117,7 +1117,7 @@ resource "aws_ecs_service" "n8n_demo_service" {
 }
 
 resource "aws_ecs_service" "sales_service_frontend" {
-  name                = "sales-service-frontend"
+  name = "sales-service-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -1125,12 +1125,12 @@ resource "aws_ecs_service" "sales_service_frontend" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sales_service_frontend_r298.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sales_service_frontend_r298.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 3
@@ -1149,19 +1149,19 @@ resource "aws_ecs_service" "sales_service_frontend" {
 }
 
 resource "aws_ecs_service" "my_trade_guru_frontend" {
-  name                = "my-trade-guru-frontend"
+  name = "my-trade-guru-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_my_trade_guru_frontend_r25.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_my_trade_guru_frontend_r25.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1180,19 +1180,19 @@ resource "aws_ecs_service" "my_trade_guru_frontend" {
 }
 
 resource "aws_ecs_service" "sla_rule_engine_backend" {
-  name                = "sla-rule-engine-backend"
+  name = "sla-rule-engine-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sla_rule_engine_backend_r3.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sla_rule_engine_backend_r3.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1211,16 +1211,16 @@ resource "aws_ecs_service" "sla_rule_engine_backend" {
 }
 
 resource "aws_ecs_service" "authserver_frontend" {
-  name                = "authserver-frontend"
+  name                          = "authserver-frontend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_authserver_frontend_r107.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_authserver_frontend_r107.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1239,16 +1239,16 @@ resource "aws_ecs_service" "authserver_frontend" {
 }
 
 resource "aws_ecs_service" "audit_management_frontend" {
-  name                = "audit-management-frontend"
+  name                          = "audit-management-frontend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_audit_management_frontend_r9.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_audit_management_frontend_r9.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1267,16 +1267,16 @@ resource "aws_ecs_service" "audit_management_frontend" {
 }
 
 resource "aws_ecs_service" "audit_management_backend" {
-  name                = "audit-management-backend"
+  name                          = "audit-management-backend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_audit_management_backend_r14.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_audit_management_backend_r14.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1295,19 +1295,19 @@ resource "aws_ecs_service" "audit_management_backend" {
 }
 
 resource "aws_ecs_service" "customer_map_service_backend" {
-  name                = "customer-map-service-backend"
+  name = "customer-map-service-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_customer_map_service_backend_r16.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_customer_map_service_backend_r16.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1326,19 +1326,19 @@ resource "aws_ecs_service" "customer_map_service_backend" {
 }
 
 resource "aws_ecs_service" "jeevahealthcare_website" {
-  name                = "jeevahealthcare-website"
+  name = "jeevahealthcare-website"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_jeevahealthcare_website_r4.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_jeevahealthcare_website_r4.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1357,19 +1357,19 @@ resource "aws_ecs_service" "jeevahealthcare_website" {
 }
 
 resource "aws_ecs_service" "marketing_backend_service" {
-  name                = "marketing-backend-service"
+  name = "marketing-backend-service"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_marketing_backend_service_r156.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_marketing_backend_service_r156.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1388,16 +1388,16 @@ resource "aws_ecs_service" "marketing_backend_service" {
 }
 
 resource "aws_ecs_service" "vmi_service_frontend" {
-  name                = "vmi-service-frontend"
+  name                          = "vmi-service-frontend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_vmi_service_frontend_r23.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_vmi_service_frontend_r23.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1416,16 +1416,16 @@ resource "aws_ecs_service" "vmi_service_frontend" {
 }
 
 resource "aws_ecs_service" "findsuppliers_website" {
-  name                = "findsuppliers-website"
+  name                          = "findsuppliers-website"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_findsuppliers_website_r4.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_findsuppliers_website_r4.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1444,19 +1444,19 @@ resource "aws_ecs_service" "findsuppliers_website" {
 }
 
 resource "aws_ecs_service" "audit_trail_frontend" {
-  name                = "audit-trail-frontend"
+  name = "audit-trail-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_audit_trail_frontend_r3.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_audit_trail_frontend_r3.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1475,19 +1475,19 @@ resource "aws_ecs_service" "audit_trail_frontend" {
 }
 
 resource "aws_ecs_service" "sourcing_backend_service" {
-  name                = "sourcing-backend-service"
+  name = "sourcing-backend-service"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sourcing_backend_service_r11.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sourcing_backend_service_r11.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1506,16 +1506,16 @@ resource "aws_ecs_service" "sourcing_backend_service" {
 }
 
 resource "aws_ecs_service" "notification_backend" {
-  name                = "notification-backend"
+  name                          = "notification-backend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_notification_backend_r24.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_notification_backend_r24.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1534,19 +1534,19 @@ resource "aws_ecs_service" "notification_backend" {
 }
 
 resource "aws_ecs_service" "reports_service" {
-  name                = "reports-service"
+  name = "reports-service"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_reports_service_r7.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_reports_service_r7.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1565,16 +1565,16 @@ resource "aws_ecs_service" "reports_service" {
 }
 
 resource "aws_ecs_service" "mfg_frontend" {
-  name                = "mfg-frontend"
+  name                          = "mfg-frontend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_mfg_frontend_r12.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_mfg_frontend_r12.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1593,16 +1593,16 @@ resource "aws_ecs_service" "mfg_frontend" {
 }
 
 resource "aws_ecs_service" "sales_dashboard_frontend" {
-  name                = "sales-dashboard-frontend"
+  name                          = "sales-dashboard-frontend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sales_dashboard_frontend_r3.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sales_dashboard_frontend_r3.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1621,19 +1621,19 @@ resource "aws_ecs_service" "sales_dashboard_frontend" {
 }
 
 resource "aws_ecs_service" "supplier_kpi_backend_v2" {
-  name                = "supplier-kpi-backend-v2"
+  name = "supplier-kpi-backend-v2"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_supplier_kpi_backend_v2_r5.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_supplier_kpi_backend_v2_r5.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1652,16 +1652,16 @@ resource "aws_ecs_service" "supplier_kpi_backend_v2" {
 }
 
 resource "aws_ecs_service" "hrms_recruitment_frontend" {
-  name                = "hrms-recruitment-frontend"
+  name                          = "hrms-recruitment-frontend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_hrms_recruitment_frontend_r43.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_hrms_recruitment_frontend_r43.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1680,16 +1680,16 @@ resource "aws_ecs_service" "hrms_recruitment_frontend" {
 }
 
 resource "aws_ecs_service" "wms_service_frontend" {
-  name                = "wms-service-frontend"
+  name                          = "wms-service-frontend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_wms_service_frontend_r67.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_wms_service_frontend_r67.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1708,7 +1708,7 @@ resource "aws_ecs_service" "wms_service_frontend" {
 }
 
 resource "aws_ecs_service" "dbi_chat_area" {
-  name                = "dbi-chat-area"
+  name = "dbi-chat-area"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -1716,12 +1716,12 @@ resource "aws_ecs_service" "dbi_chat_area" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_dbi_chat_area_r219.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_dbi_chat_area_r219.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1740,19 +1740,19 @@ resource "aws_ecs_service" "dbi_chat_area" {
 }
 
 resource "aws_ecs_service" "sso_project_management" {
-  name                = "sso-project-management"
+  name = "sso-project-management"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sso_project_management_r6.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sso_project_management_r6.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1771,19 +1771,19 @@ resource "aws_ecs_service" "sso_project_management" {
 }
 
 resource "aws_ecs_service" "authorization_v2" {
-  name                = "authorization-v2"
+  name = "authorization-v2"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_authorization_v2_r38.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_authorization_v2_r38.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1802,7 +1802,7 @@ resource "aws_ecs_service" "authorization_v2" {
 }
 
 resource "aws_ecs_service" "finance_backend_service" {
-  name                = "finance-backend-service"
+  name = "finance-backend-service"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -1810,12 +1810,12 @@ resource "aws_ecs_service" "finance_backend_service" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_finance_backend_service_r160.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_finance_backend_service_r160.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1834,7 +1834,7 @@ resource "aws_ecs_service" "finance_backend_service" {
 }
 
 resource "aws_ecs_service" "dbi_chat_widget" {
-  name                = "dbi-chat-widget"
+  name = "dbi-chat-widget"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -1842,12 +1842,12 @@ resource "aws_ecs_service" "dbi_chat_widget" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_dbi_chat_widget_r119.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_dbi_chat_widget_r119.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -1866,19 +1866,19 @@ resource "aws_ecs_service" "dbi_chat_widget" {
 }
 
 resource "aws_ecs_service" "farm_management" {
-  name                = "farm-management"
+  name = "farm-management"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_farm_management_r2.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_farm_management_r2.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1897,19 +1897,19 @@ resource "aws_ecs_service" "farm_management" {
 }
 
 resource "aws_ecs_service" "nexus_react_frontend" {
-  name                = "nexus-react-frontend"
+  name = "nexus-react-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_nexus_react_frontend_r40.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_nexus_react_frontend_r40.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1928,19 +1928,19 @@ resource "aws_ecs_service" "nexus_react_frontend" {
 }
 
 resource "aws_ecs_service" "task_service_frontend" {
-  name                = "task-service-frontend"
+  name = "task-service-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_task_service_frontend_r82.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_task_service_frontend_r82.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1959,19 +1959,19 @@ resource "aws_ecs_service" "task_service_frontend" {
 }
 
 resource "aws_ecs_service" "pricing_engine" {
-  name                = "pricing-engine"
+  name = "pricing-engine"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_pricing_engine_r5.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_pricing_engine_r5.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -1990,19 +1990,19 @@ resource "aws_ecs_service" "pricing_engine" {
 }
 
 resource "aws_ecs_service" "communication_backend" {
-  name                = "communication-backend"
+  name = "communication-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_communication_backend_r3.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_communication_backend_r3.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2021,19 +2021,19 @@ resource "aws_ecs_service" "communication_backend" {
 }
 
 resource "aws_ecs_service" "sgl_ecommerce_backend" {
-  name                = "sgl-ecommerce-backend"
+  name = "sgl-ecommerce-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sgl_ecommerce_backend_r3.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sgl_ecommerce_backend_r3.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2052,19 +2052,19 @@ resource "aws_ecs_service" "sgl_ecommerce_backend" {
 }
 
 resource "aws_ecs_service" "b2badmin_frontend" {
-  name                = "b2badmin-frontend"
+  name = "b2badmin-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_b2badmin_frontend_r64.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_b2badmin_frontend_r64.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2083,7 +2083,7 @@ resource "aws_ecs_service" "b2badmin_frontend" {
 }
 
 resource "aws_ecs_service" "regos" {
-  name                = "regos"
+  name = "regos"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -2091,12 +2091,12 @@ resource "aws_ecs_service" "regos" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_regos_r44.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_regos_r44.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 3
@@ -2115,16 +2115,16 @@ resource "aws_ecs_service" "regos" {
 }
 
 resource "aws_ecs_service" "authserver_backend" {
-  name                = "authserver-backend"
+  name                          = "authserver-backend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_authserver_backend_r252.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_authserver_backend_r252.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -2143,19 +2143,19 @@ resource "aws_ecs_service" "authserver_backend" {
 }
 
 resource "aws_ecs_service" "zookeeper_service" {
-  name                = "zookeeper-service"
+  name = "zookeeper-service"
   service_registries {
     registry_arn = "arn:aws:servicediscovery:us-east-2:842676018479:service/srv-wfesb55t4nyjyujj"
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.zookeeper_task_r3.arn
-  desired_count       = 1
-  launch_type         = "FARGATE"
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.zookeeper_task_r3.arn
+  desired_count                 = 1
+  launch_type                   = "FARGATE"
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   network_configuration {
     subnets          = ["subnet-073cba83e3cde7daf", "subnet-0eeefbeb3f67a5dfc"]
     security_groups  = ["sg-088b1a7bdd325cef8"]
@@ -2164,19 +2164,19 @@ resource "aws_ecs_service" "zookeeper_service" {
 }
 
 resource "aws_ecs_service" "nexus_landing_next" {
-  name                = "nexus-landing-next"
+  name = "nexus-landing-next"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_nexus_landing_next_r57.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_nexus_landing_next_r57.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2195,16 +2195,16 @@ resource "aws_ecs_service" "nexus_landing_next" {
 }
 
 resource "aws_ecs_service" "inventory_service_backend" {
-  name                = "inventory-service-backend"
+  name                          = "inventory-service-backend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_inventory_service_backend_r64.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_inventory_service_backend_r64.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -2223,19 +2223,19 @@ resource "aws_ecs_service" "inventory_service_backend" {
 }
 
 resource "aws_ecs_service" "nexus_fast_api" {
-  name                = "nexus-fast-api"
+  name = "nexus-fast-api"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_nexus_fast_api_r61.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_nexus_fast_api_r61.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2254,19 +2254,19 @@ resource "aws_ecs_service" "nexus_fast_api" {
 }
 
 resource "aws_ecs_service" "clicklens_service" {
-  name                = "clicklens-service"
+  name = "clicklens-service"
   service_registries {
     registry_arn = "arn:aws:servicediscovery:us-east-2:842676018479:service/srv-ccqk63lalnteohta"
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.clicklens_task_final_r4.arn
-  desired_count       = 1
-  launch_type         = "FARGATE"
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.clicklens_task_final_r4.arn
+  desired_count                 = 1
+  launch_type                   = "FARGATE"
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   network_configuration {
     subnets          = ["subnet-073cba83e3cde7daf", "subnet-0eeefbeb3f67a5dfc"]
     security_groups  = ["sg-088b1a7bdd325cef8"]
@@ -2280,7 +2280,7 @@ resource "aws_ecs_service" "clicklens_service" {
 }
 
 resource "aws_ecs_service" "sales_service_backend" {
-  name                = "sales-service-backend"
+  name = "sales-service-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -2288,12 +2288,12 @@ resource "aws_ecs_service" "sales_service_backend" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sales_service_backend_r481.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sales_service_backend_r481.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 3
@@ -2312,16 +2312,16 @@ resource "aws_ecs_service" "sales_service_backend" {
 }
 
 resource "aws_ecs_service" "hrms_inventory" {
-  name                = "hrms-inventory"
+  name                          = "hrms-inventory"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_hrms_inventory_r8.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_hrms_inventory_r8.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -2340,19 +2340,19 @@ resource "aws_ecs_service" "hrms_inventory" {
 }
 
 resource "aws_ecs_service" "kafka_service" {
-  name                = "kafka-service"
+  name = "kafka-service"
   service_registries {
     registry_arn = "arn:aws:servicediscovery:us-east-2:842676018479:service/srv-7cqwij3yqxbsi446"
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.kafka_task_fixed_r3.arn
-  desired_count       = 1
-  launch_type         = "FARGATE"
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.kafka_task_fixed_r3.arn
+  desired_count                 = 1
+  launch_type                   = "FARGATE"
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   network_configuration {
     subnets          = ["subnet-073cba83e3cde7daf", "subnet-0eeefbeb3f67a5dfc"]
     security_groups  = ["sg-088b1a7bdd325cef8"]
@@ -2361,7 +2361,7 @@ resource "aws_ecs_service" "kafka_service" {
 }
 
 resource "aws_ecs_service" "finance_frontend_service" {
-  name                = "finance-frontend-service"
+  name = "finance-frontend-service"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -2369,12 +2369,12 @@ resource "aws_ecs_service" "finance_frontend_service" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_finance_frontend_service_r112.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_finance_frontend_service_r112.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -2393,19 +2393,19 @@ resource "aws_ecs_service" "finance_frontend_service" {
 }
 
 resource "aws_ecs_service" "biotrace_next" {
-  name                = "biotrace-next"
+  name = "biotrace-next"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_biotrace_next_r41.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_biotrace_next_r41.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2424,16 +2424,16 @@ resource "aws_ecs_service" "biotrace_next" {
 }
 
 resource "aws_ecs_service" "task_management" {
-  name                = "task-management"
+  name                          = "task-management"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_task_management_r71.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_task_management_r71.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -2452,7 +2452,7 @@ resource "aws_ecs_service" "task_management" {
 }
 
 resource "aws_ecs_service" "dbi_websocket" {
-  name                = "dbi-websocket"
+  name = "dbi-websocket"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -2460,12 +2460,12 @@ resource "aws_ecs_service" "dbi_websocket" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_dbi_websocket_r249.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_dbi_websocket_r249.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -2484,19 +2484,19 @@ resource "aws_ecs_service" "dbi_websocket" {
 }
 
 resource "aws_ecs_service" "sla_rule_engine_frontend" {
-  name                = "sla-rule-engine-frontend"
+  name = "sla-rule-engine-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sla_rule_engine_frontend_r8.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sla_rule_engine_frontend_r8.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2515,16 +2515,16 @@ resource "aws_ecs_service" "sla_rule_engine_frontend" {
 }
 
 resource "aws_ecs_service" "notification_frontend" {
-  name                = "notification-frontend"
+  name                          = "notification-frontend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_notification_frontend_r7.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_notification_frontend_r7.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -2543,7 +2543,7 @@ resource "aws_ecs_service" "notification_frontend" {
 }
 
 resource "aws_ecs_service" "lead_qualifier_backend" {
-  name                = "lead-qualifier-backend"
+  name = "lead-qualifier-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -2551,12 +2551,12 @@ resource "aws_ecs_service" "lead_qualifier_backend" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_lead_qualifier_backend_r67.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_lead_qualifier_backend_r67.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 3
@@ -2575,19 +2575,19 @@ resource "aws_ecs_service" "lead_qualifier_backend" {
 }
 
 resource "aws_ecs_service" "buyersflow_backend" {
-  name                = "buyersflow-backend"
+  name = "buyersflow-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_buyersflow_backend_r38.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_buyersflow_backend_r38.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2606,16 +2606,16 @@ resource "aws_ecs_service" "buyersflow_backend" {
 }
 
 resource "aws_ecs_service" "inventory_service_frontend" {
-  name                = "inventory-service-frontend"
+  name                          = "inventory-service-frontend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_inventory_service_frontend_r41.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_inventory_service_frontend_r41.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -2634,7 +2634,7 @@ resource "aws_ecs_service" "inventory_service_frontend" {
 }
 
 resource "aws_ecs_service" "company_research_backend" {
-  name                = "company-research-backend"
+  name = "company-research-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -2642,12 +2642,12 @@ resource "aws_ecs_service" "company_research_backend" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_company_research_backend_r26.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_company_research_backend_r26.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -2666,7 +2666,7 @@ resource "aws_ecs_service" "company_research_backend" {
 }
 
 resource "aws_ecs_service" "buyersflow_website" {
-  name                = "buyersflow-website"
+  name = "buyersflow-website"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -2674,12 +2674,12 @@ resource "aws_ecs_service" "buyersflow_website" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_buyersflow_website_r3.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_buyersflow_website_r3.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 3
@@ -2698,19 +2698,19 @@ resource "aws_ecs_service" "buyersflow_website" {
 }
 
 resource "aws_ecs_service" "buyersflow_new" {
-  name                = "buyersflow-new"
+  name = "buyersflow-new"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_buyersflow_new_r19.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_buyersflow_new_r19.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2729,19 +2729,19 @@ resource "aws_ecs_service" "buyersflow_new" {
 }
 
 resource "aws_ecs_service" "b2badmin_backend" {
-  name                = "b2badmin-backend"
+  name = "b2badmin-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_b2badmin_backend_r105.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_b2badmin_backend_r105.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2760,19 +2760,19 @@ resource "aws_ecs_service" "b2badmin_backend" {
 }
 
 resource "aws_ecs_service" "sourcing_frontend_service" {
-  name                = "sourcing-frontend-service"
+  name = "sourcing-frontend-service"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sourcing_frontend_service_r12.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sourcing_frontend_service_r12.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2791,16 +2791,16 @@ resource "aws_ecs_service" "sourcing_frontend_service" {
 }
 
 resource "aws_ecs_service" "aster_node" {
-  name                = "aster-node"
+  name                          = "aster-node"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_aster_node_r392.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_aster_node_r392.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -2819,19 +2819,19 @@ resource "aws_ecs_service" "aster_node" {
 }
 
 resource "aws_ecs_service" "gj_ecommerce_backend" {
-  name                = "gj-ecommerce-backend"
+  name = "gj-ecommerce-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_gj_ecommerce_backend_r100.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_gj_ecommerce_backend_r100.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2850,19 +2850,19 @@ resource "aws_ecs_service" "gj_ecommerce_backend" {
 }
 
 resource "aws_ecs_service" "ticketing_system_backend" {
-  name                = "ticketing-system-backend"
+  name = "ticketing-system-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_ticketing_system_backend_r62.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_ticketing_system_backend_r62.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2881,21 +2881,21 @@ resource "aws_ecs_service" "ticketing_system_backend" {
 }
 
 resource "aws_ecs_service" "hrms_backend" {
-  name                = "hrms-backend"
+  name = "hrms-backend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
-  enable_execute_command        = true
+  enable_execute_command            = true
   health_check_grace_period_seconds = 120
-  availability_zone_rebalancing = "ENABLED"
-  enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_hrms_backend_r317.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  availability_zone_rebalancing     = "ENABLED"
+  enable_ecs_managed_tags           = true
+  cluster                           = aws_ecs_cluster.development_cluster.id
+  task_definition                   = data.aws_ecs_task_definition.development_hrms_backend_r317.arn
+  desired_count                     = 1
+  scheduling_strategy               = "REPLICA"
+  platform_version                  = "LATEST"
+  iam_role                          = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 3
@@ -2914,19 +2914,19 @@ resource "aws_ecs_service" "hrms_backend" {
 }
 
 resource "aws_ecs_service" "ecommerce_frontend_next" {
-  name                = "ecommerce-frontend-next"
+  name = "ecommerce-frontend-next"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_ecommerce_frontend_next_r71.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_ecommerce_frontend_next_r71.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -2945,19 +2945,19 @@ resource "aws_ecs_service" "ecommerce_frontend_next" {
 }
 
 resource "aws_ecs_service" "clickhouse_service" {
-  name                = "clickhouse-service"
+  name = "clickhouse-service"
   service_registries {
     registry_arn = "arn:aws:servicediscovery:us-east-2:842676018479:service/srv-avqu7ogicij45ls7"
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.clickhouse_task_full_r2.arn
-  desired_count       = 1
-  launch_type         = "FARGATE"
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.clickhouse_task_full_r2.arn
+  desired_count                 = 1
+  launch_type                   = "FARGATE"
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   network_configuration {
     subnets          = ["subnet-073cba83e3cde7daf", "subnet-0eeefbeb3f67a5dfc"]
     security_groups  = ["sg-088b1a7bdd325cef8"]
@@ -2971,16 +2971,16 @@ resource "aws_ecs_service" "clickhouse_service" {
 }
 
 resource "aws_ecs_service" "hrms_careeer_frontend" {
-  name                = "hrms-careeer-frontend"
+  name                          = "hrms-careeer-frontend"
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_hrms_careeer_frontend_r16.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_hrms_careeer_frontend_r16.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -2999,19 +2999,19 @@ resource "aws_ecs_service" "hrms_careeer_frontend" {
 }
 
 resource "aws_ecs_service" "revenue_incentive" {
-  name                = "revenue-incentive"
+  name = "revenue-incentive"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_revenue_incentive_r9.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_revenue_incentive_r9.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -3030,19 +3030,19 @@ resource "aws_ecs_service" "revenue_incentive" {
 }
 
 resource "aws_ecs_service" "ticketing_system_frontend" {
-  name                = "ticketing-system-frontend"
+  name = "ticketing-system-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_ticketing_system_frontend_r13.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_ticketing_system_frontend_r13.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -3061,19 +3061,19 @@ resource "aws_ecs_service" "ticketing_system_frontend" {
 }
 
 resource "aws_ecs_service" "calculator_v2" {
-  name                = "calculator-v2"
+  name = "calculator-v2"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_calculator_v2_r2.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_calculator_v2_r2.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -3092,19 +3092,19 @@ resource "aws_ecs_service" "calculator_v2" {
 }
 
 resource "aws_ecs_service" "drmallad" {
-  name                = "drmallad"
+  name = "drmallad"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_drmallad_r28.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_drmallad_r28.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 3
@@ -3123,7 +3123,7 @@ resource "aws_ecs_service" "drmallad" {
 }
 
 resource "aws_ecs_service" "purchase_intelligence" {
-  name                = "purchase-intelligence"
+  name = "purchase-intelligence"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
@@ -3131,12 +3131,12 @@ resource "aws_ecs_service" "purchase_intelligence" {
   enable_execute_command        = true
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_purchase_intelligence_r32.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_purchase_intelligence_r32.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE_SPOT"
     weight            = 1
@@ -3155,19 +3155,19 @@ resource "aws_ecs_service" "purchase_intelligence" {
 }
 
 resource "aws_ecs_service" "customer_map_service_frontend" {
-  name                = "customer-map-service-frontend"
+  name = "customer-map-service-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_customer_map_service_frontend_r6.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_customer_map_service_frontend_r6.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -3186,19 +3186,19 @@ resource "aws_ecs_service" "customer_map_service_frontend" {
 }
 
 resource "aws_ecs_service" "sgl_ecommerce_frontend" {
-  name                = "sgl-ecommerce-frontend"
+  name = "sgl-ecommerce-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_sgl_ecommerce_frontend_r9.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_sgl_ecommerce_frontend_r9.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1
@@ -3217,19 +3217,19 @@ resource "aws_ecs_service" "sgl_ecommerce_frontend" {
 }
 
 resource "aws_ecs_service" "asterdocs_frontend" {
-  name                = "asterdocs-frontend"
+  name = "asterdocs-frontend"
   deployment_circuit_breaker {
     enable   = true
     rollback = true
   }
   availability_zone_rebalancing = "ENABLED"
   enable_ecs_managed_tags       = true
-  cluster             = aws_ecs_cluster.development_cluster.id
-  task_definition     = data.aws_ecs_task_definition.development_asterdocs_frontend_r452.arn
-  desired_count       = 1
-  scheduling_strategy = "REPLICA"
-  platform_version    = "LATEST"
-  iam_role            = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  cluster                       = aws_ecs_cluster.development_cluster.id
+  task_definition               = data.aws_ecs_task_definition.development_asterdocs_frontend_r452.arn
+  desired_count                 = 1
+  scheduling_strategy           = "REPLICA"
+  platform_version              = "LATEST"
+  iam_role                      = "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
     weight            = 1

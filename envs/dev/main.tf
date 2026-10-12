@@ -6,8 +6,8 @@
 # =============================================================
 
 module "vpc" {
-  source     = "../../modules/vpc"
-  aws_region = var.aws_region
+  source      = "../../modules/vpc"
+  aws_region  = var.aws_region
   vpc_id      = "vpc-09a55f1c24c5673a4"
   environment = "dev"
 
@@ -39,19 +39,8 @@ module "ecs_development" {
 }
 
 module "ecs_staging" {
- source      = "../../modules/ecs/staging"
+  source      = "../../modules/ecs/staging"
   aws_region  = var.aws_region
   environment = "staging"
 }
 
-#module "ecs_testing" {
-#  source      = "../../modules/ecs/testing"
-#  aws_region  = var.aws_region
-#  environment = "testing"
-#}
-
-#module "ecs_idle" {
-#  source      = "../../modules/ecs/idle"
-#  aws_region  = var.aws_region
-#  environment = "idle"
-#}

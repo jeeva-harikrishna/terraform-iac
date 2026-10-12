@@ -4,7 +4,7 @@ resource "aws_lb" "security_alb" {
   name               = "security-alb"
   internal           = false
   load_balancer_type = "application"
-  subnets    = ["subnet-00aeadbdd62745fc3", "subnet-0da9a2ce0bdf8f0c4", "subnet-0edb5e24493ea9804"]
+  subnets            = ["subnet-00aeadbdd62745fc3", "subnet-0da9a2ce0bdf8f0c4", "subnet-0edb5e24493ea9804"]
   lifecycle {
     ignore_changes = all
   }
@@ -14,7 +14,7 @@ resource "aws_lb" "development_alb" {
   name               = "development-alb"
   internal           = false
   load_balancer_type = "application"
-  subnets    = ["subnet-0d1f5a1657a43b81e", "subnet-0e4b966ab7e6a80ad"]
+  subnets            = ["subnet-0d1f5a1657a43b81e", "subnet-0e4b966ab7e6a80ad"]
   lifecycle {
     ignore_changes = all
   }
@@ -24,7 +24,7 @@ resource "aws_lb" "development_alb_2" {
   name               = "development-alb-2"
   internal           = false
   load_balancer_type = "application"
-  subnets    = ["subnet-0d1f5a1657a43b81e", "subnet-0e4b966ab7e6a80ad"]
+  subnets            = ["subnet-0d1f5a1657a43b81e", "subnet-0e4b966ab7e6a80ad"]
   lifecycle {
     ignore_changes = all
   }
@@ -34,7 +34,7 @@ resource "aws_lb" "staging_alb" {
   name               = "staging-alb"
   internal           = false
   load_balancer_type = "application"
-  subnets    = ["subnet-0d1f5a1657a43b81e", "subnet-0e4b966ab7e6a80ad"]
+  subnets            = ["subnet-0d1f5a1657a43b81e", "subnet-0e4b966ab7e6a80ad"]
   lifecycle {
     ignore_changes = all
   }
@@ -1944,7 +1944,7 @@ resource "aws_lb_listener" "development_alb_https" {
   certificate_arn   = "arn:aws:acm:us-east-2:842676018479:certificate/38e84378-57b9-4e8b-b230-0dd33866ab9d"
 
   default_action {
-    type         = "fixed-response"
+    type = "fixed-response"
     fixed_response {
       message_body = "Not Found"
       status_code  = "404"
@@ -2023,4 +2023,121 @@ resource "aws_lb_listener" "staging_alb_https" {
   }
 
   lifecycle { ignore_changes = all }
+}
+
+
+resource "aws_lb_target_group" "staging_findsuppliers_8767b4_tg" {
+  name        = "staging-findsuppliers-8767b4-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  lambda_multi_value_headers_enabled = false
+  proxy_protocol_v2                  = false
+
+  health_check {
+    enabled             = true
+    path                = "/health"
+    protocol            = "HTTP"
+    port                = "traffic-port"
+    matcher             = "200"
+    healthy_threshold   = 5
+    unhealthy_threshold = 2
+    interval            = 30
+    timeout             = 5
+  }
+
+  tags = {
+    Environment = "dev"
+    ManagedBy   = "Terraform"
+    Project     = "dbi360"
+  }
+}
+
+resource "aws_lb_target_group" "staging_findsuppliers_backend_tg" {
+  name        = "staging-findsuppliers-backend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  lambda_multi_value_headers_enabled = false
+  proxy_protocol_v2                  = false
+
+  health_check {
+    enabled             = true
+    path                = "/health"
+    protocol            = "HTTP"
+    port                = "traffic-port"
+    matcher             = "200"
+    healthy_threshold   = 5
+    unhealthy_threshold = 2
+    interval            = 30
+    timeout             = 5
+  }
+
+  tags = {
+    Environment = "dev"
+    ManagedBy   = "Terraform"
+    Project     = "dbi360"
+  }
+}
+
+resource "aws_lb_target_group" "staging_vmi_service_backend_tg" {
+  name        = "staging-vmi-service-backend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  lambda_multi_value_headers_enabled = false
+  proxy_protocol_v2                  = false
+
+  health_check {
+    enabled             = true
+    path                = "/health"
+    protocol            = "HTTP"
+    port                = "traffic-port"
+    matcher             = "200"
+    healthy_threshold   = 2
+    unhealthy_threshold = 3
+    interval            = 30
+    timeout             = 5
+  }
+
+  tags = {
+    Environment = "dev"
+    ManagedBy   = "Terraform"
+    Project     = "dbi360"
+  }
+}
+
+resource "aws_lb_target_group" "staging_vmi_service_frontend_tg" {
+  name        = "staging-vmi-service-frontend-tg"
+  port        = 8080
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
+
+  lambda_multi_value_headers_enabled = false
+  proxy_protocol_v2                  = false
+
+  health_check {
+    enabled             = true
+    path                = "/health"
+    protocol            = "HTTP"
+    port                = "traffic-port"
+    matcher             = "200"
+    healthy_threshold   = 2
+    unhealthy_threshold = 3
+    interval            = 30
+    timeout             = 5
+  }
+
+  tags = {
+    Environment = "dev"
+    ManagedBy   = "Terraform"
+    Project     = "dbi360"
+  }
 }
